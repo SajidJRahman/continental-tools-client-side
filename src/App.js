@@ -8,6 +8,7 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import About from './Pages/About/About';
 import Login from './Pages/Authentications/Login/Login';
 import SignUp from './Pages/Authentications/SignUp/SignUp';
+import NotFound from './Pages/NotFound/NotFound';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUp />}></Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );

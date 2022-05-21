@@ -1,0 +1,33 @@
+/* font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* font Akshar */
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap');
+
+.not-found {
+    background-image: url('../../Images/Logos/braden-collum-149vt6evNQQ-unsplash.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 65px;
+    padding-bottom: 118px;
+}
+
+.not-found h1 {
+    font-size: 200px;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-family: 'Akshar', sans-serif;
+}
+
+.not-found h2 {
+    font-size: 33px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.not-found p {
+    font-size: 20px;
+}
