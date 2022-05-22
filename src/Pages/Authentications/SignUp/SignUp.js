@@ -12,10 +12,10 @@ const SignUp = () => {
                     <h1 className='text-center text-3xl lg:text-4xl'>Sign Up</h1>
                     <p className='text-center font-bold my-5'>Social Sign Up</p>
                     <div className='flex mx-auto'>
-                        <button className='btn-social py-3 px-12 lg:px-16 sm:px-12 mr-3 rounded-lg flex items-center justify-center'>
+                        <button className='btn-social py-3 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={Google} alt="" />
                         </button>
-                        <button className='btn-social py-3 px-12 lg:px-16 sm:px-12 ml-3 rounded-lg flex items-center justify-center'>
+                        <button className='btn-social py-3 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={GitHub} alt="" />
                         </button>
                     </div>
