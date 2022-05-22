@@ -5,12 +5,12 @@ import GitHub from '../../../Images/Logos/GitHub.svg';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../../firebase.init';
+import Spinner from '../../Shared/Spinner/Spinner';
 import {
     useSignInWithGoogle,
     useSignInWithGithub,
     useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
-import Spinner from '../../Shared/Spinner/Spinner';
 
 const Login = () => {
     const navigate = useNavigate();
