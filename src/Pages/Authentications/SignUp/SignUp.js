@@ -72,10 +72,10 @@ const SignUp = () => {
                     <p className='text-center font-bold my-5'>Social Sign Up</p>
 
                     <div className='flex mx-auto'>
-                        <button onClick={() => signInWithGoogle()} className='btn-social py-3 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGoogle()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={Google} alt="" />
                         </button>
-                        <button onClick={() => signInWithGithub()} className='btn-social py-3 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGithub()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={GitHub} alt="" />
                         </button>
                     </div>
@@ -83,7 +83,7 @@ const SignUp = () => {
                     <div className="flex flex-col w-full border-opacity-50">
                         <div className="divider">OR Continue With</div>
                     </div>
-                    
+
                     <p className='text-center font-bold'>Email & Password</p>
                     <div className="form-control">
                         <label className="label">

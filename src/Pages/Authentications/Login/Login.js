@@ -8,8 +8,9 @@ import auth from '../../../firebase.init';
 import {
     useSignInWithGoogle,
     useSignInWithGithub,
-    useSignInWithEmailAndPassword
+    useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
+import Spinner from '../../Shared/Spinner/Spinner';
 
 const Login = () => {
     const {
@@ -40,7 +41,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     if (loadingGoogle || loadingGitHub || loading) {
-        console.log(loadingGoogle || loadingGitHub || loading);
+        return <Spinner />;
     }
 
     if (userGoogle || userGitHub || user) {
@@ -63,10 +64,10 @@ const Login = () => {
                     <p className='text-center font-bold my-5'>Social Login</p>
 
                     <div className='flex mx-auto'>
-                        <button onClick={() => signInWithGoogle()} className='btn-social py-3 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGoogle()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={Google} alt="" />
                         </button>
-                        <button onClick={() => signInWithGithub()} className='btn-social py-3 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGithub()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
                             <img width='40px' src={GitHub} alt="" />
                         </button>
                     </div>
@@ -122,8 +123,10 @@ const Login = () => {
                                 <span className='label-text-alt text-red-500'>{errors.password.message}</span>}
                         </label>
 
-                        <label className="label mx-auto">
-                            <button className="label-text-alt link link-hover">Forgot password?</button>
+                        <label className="label mx-auto py-0">
+                            <Link to='/reset-password'>
+                                <button className="label-text-alt link link-hover">Forgot password?</button>
+                            </Link>
                         </label>
                     </div>
                     <p className='text-center font-bold'>Don't have an account? <Link to='/sign-up' className='text-primary'>Sign Up</Link></p>

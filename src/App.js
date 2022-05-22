@@ -9,10 +9,13 @@ import About from './Pages/About/About';
 import Login from './Pages/Authentications/Login/Login';
 import SignUp from './Pages/Authentications/SignUp/SignUp';
 import NotFound from './Pages/NotFound/NotFound';
+import ResetPassword from './Pages/Authentications/ResetPassword/ResetPassword';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -23,6 +26,7 @@ const App = () => {
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUp />}></Route>
+        <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
