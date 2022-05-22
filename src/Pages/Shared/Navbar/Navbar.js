@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+
+            })
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -35,12 +46,33 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className='mr-2'>
-                    <button className='btn btn-outline rounded-full lg:px-10 md:px-10'>Login</button>
-                </Link>
-                <Link to='/sign-up'>
-                    <button className='btn rounded-full lg:px-10 md:px-10'>Sign Up</button>
-                </Link>
+                {
+                    user &&
+                    <div className="avatar">
+                        <div className="w-10 mr-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={user?.photoURL} alt="" />
+                        </div>
+                    </div>
+                }
+                {
+                    user &&
+                    <div className='font-bold mr-5'>
+                        <p>{user?.displayName}</p>
+                    </div>
+                }
+                {
+                    user ?
+                        <button onClick={handleSignOut} className='btn rounded-full lg:px-10 md:px-10'>Log Out</button>
+                        :
+                        <div>
+                            <Link to='/login' className='mr-2'>
+                                <button className='btn btn-outline rounded-full lg:px-10 md:px-10'>Login</button>
+                            </Link>
+                            <Link to='/sign-up'>
+                                <button className='btn rounded-full lg:px-10 md:px-10'>Sign Up</button>
+                            </Link>
+                        </div>
+                }
             </div>
         </div>
     );

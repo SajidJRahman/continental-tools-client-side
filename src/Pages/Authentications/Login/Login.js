@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Login.css';
 import Google from '../../../Images/Logos/Google.svg';
 import GitHub from '../../../Images/Logos/GitHub.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../../firebase.init';
 import {
@@ -13,6 +13,10 @@ import {
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
+
     const {
         register,
         handleSubmit,
@@ -40,12 +44,14 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    useEffect(() => {
+        if (userGoogle || userGitHub || user) {
+            navigate(from, { replace: true });
+        }
+    }, [from, navigate, user, userGitHub, userGoogle]);
+
     if (loadingGoogle || loadingGitHub || loading) {
         return <Spinner />;
-    }
-
-    if (userGoogle || userGitHub || user) {
-        console.log(userGoogle || userGitHub || user);
     }
 
     if (errorGoogle || errorGitHub || error) {

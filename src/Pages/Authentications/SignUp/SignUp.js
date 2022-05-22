@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SignUp.css';
 import Google from '../../../Images/Logos/Google.svg';
 import GitHub from '../../../Images/Logos/GitHub.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import auth from '../../../firebase.init';
 import {
@@ -13,6 +13,8 @@ import {
 } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
@@ -50,9 +52,11 @@ const SignUp = () => {
         console.log(loadingGoogle || loadingGitHub || loading || updatingUpdate);
     }
 
-    if (userGoogle || userGitHub || user) {
-        console.log(userGoogle || userGitHub || user);
-    }
+    useEffect(() => {
+        if (userGoogle || userGitHub || user) {
+            navigate('/');
+        }
+    }, [navigate, user, userGitHub, userGoogle]);
 
     if (errorGoogle || errorGitHub || error || errorUpdate) {
         console.log(errorGoogle || errorGitHub || error || errorUpdate);
