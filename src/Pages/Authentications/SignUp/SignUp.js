@@ -11,6 +11,8 @@ import {
     useCreateUserWithEmailAndPassword,
     useUpdateProfile
 } from 'react-firebase-hooks/auth';
+import Spinner from '../../Shared/Spinner/Spinner';
+
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -48,18 +50,18 @@ const SignUp = () => {
         errorUpdate
     ] = useUpdateProfile(auth);
 
-    if (loadingGoogle || loadingGitHub || loading || updatingUpdate) {
-        console.log(loadingGoogle || loadingGitHub || loading || updatingUpdate);
-    }
-
     useEffect(() => {
         if (userGoogle || userGitHub || user) {
             navigate('/');
         }
     }, [navigate, user, userGitHub, userGoogle]);
 
+    if (loadingGoogle || loadingGitHub || loading || updatingUpdate) {
+        return <Spinner />
+    }
+
     if (errorGoogle || errorGitHub || error || errorUpdate) {
-        console.log(errorGoogle || errorGitHub || error || errorUpdate);
+        alert(errorGoogle || errorGitHub || error || errorUpdate);
     }
 
     const onSubmit = async data => {
@@ -71,24 +73,21 @@ const SignUp = () => {
         <div className="hero py-32 bg-gradient-to-r from-secondary to-primary">
             <div className="card w-80 lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
                 <div className="card-body">
-
-                    <h1 className='text-center text-3xl lg:text-4xl'>Sign Up</h1>
-                    <p className='text-center font-bold my-5'>Social Sign Up</p>
+                    <h1 className='text-center text-3xl mb-5 lg:text-4xl'>Sign Up</h1>
 
                     <div className='flex mx-auto'>
-                        <button onClick={() => signInWithGoogle()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 mr-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGoogle()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 mr-3 rounded-lg flex items-center justify-center'>
                             <img width='40px' src={Google} alt="" />
                         </button>
-                        <button onClick={() => signInWithGithub()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 ml-3 rounded-full flex items-center justify-center'>
+                        <button onClick={() => signInWithGithub()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 ml-3 rounded-lg flex items-center justify-center'>
                             <img width='40px' src={GitHub} alt="" />
                         </button>
                     </div>
 
                     <div className="flex flex-col w-full border-opacity-50">
-                        <div className="divider">OR Continue With</div>
+                        <div className="divider mb-0">OR Continue With</div>
                     </div>
 
-                    <p className='text-center font-bold'>Email & Password</p>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>

@@ -47,7 +47,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user &&
+                    user?.photoURL &&
                     <div className="avatar">
                         <div className="w-10 mr-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={user?.photoURL} alt="" />
@@ -55,7 +55,7 @@ const Navbar = () => {
                     </div>
                 }
                 {
-                    user &&
+                    user?.displayName &&
                     <div className='font-bold mr-5'>
                         <p>{user?.displayName}</p>
                     </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
                         </div>
                 }
             </div>
-        </div>
+        </div >
     );
 };
 
