@@ -67,6 +67,7 @@ const SignUp = () => {
         <div className="hero py-32 bg-gradient-to-r from-secondary to-primary">
             <div className="card w-80 lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
                 <div className="card-body">
+
                     <h1 className='text-center text-3xl lg:text-4xl'>Sign Up</h1>
                     <p className='text-center font-bold my-5'>Social Sign Up</p>
 
@@ -82,6 +83,7 @@ const SignUp = () => {
                     <div className="flex flex-col w-full border-opacity-50">
                         <div className="divider">OR Continue With</div>
                     </div>
+                    
                     <p className='text-center font-bold'>Email & Password</p>
                     <div className="form-control">
                         <label className="label">
