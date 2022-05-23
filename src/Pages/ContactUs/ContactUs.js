@@ -3,7 +3,6 @@ import './ContactUs.css';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 
-
 const ContactUs = () => {
     const {
         register,
@@ -32,7 +31,7 @@ const ContactUs = () => {
     }
 
     return (
-        <div className="hero bg-base-200">
+        <div className="hero bg-base-200 font-poppins">
             <div className="hero-content bg-primary p-0 gap-0 m-10 rounded-[1rem] shadow-2xl flex-col lg:flex-row">
                 <div className='p-8 h-full w-full'>
                     <h1 className='text-2xl text-white'>Contact Information</h1>
@@ -114,7 +113,7 @@ const ContactUs = () => {
                             <label className="label">
                                 <span className="label-text font-bold">Message</span>
                             </label>
-                            <textarea className="textarea textarea-bordered h-24" {...register('message', { required: true })} placeholder="Bio"></textarea>
+                            <textarea className="textarea textarea-bordered h-24" {...register('message', { required: true })} placeholder="Message"></textarea>
                         </div>
                         <div className="form-control mt-6">
                             <button onClick={handleSubmit(onSubmit)} className="btn btn-primary">Submit</button>

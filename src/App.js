@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import Home from './Pages/Home/Home/Home';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Blogs from './Pages/Blogs/Blogs';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import About from './Pages/About/About';
@@ -10,7 +10,9 @@ import Login from './Pages/Authentications/Login/Login';
 import SignUp from './Pages/Authentications/SignUp/SignUp';
 import NotFound from './Pages/NotFound/NotFound';
 import ResetPassword from './Pages/Authentications/ResetPassword/ResetPassword';
+import RequireAuth from './Pages/Authentications/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
+import AddReview from './Pages/Dashboard/AddReview/AddReview';
 
 const App = () => {
   return (
@@ -20,13 +22,17 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/contact-us' element={<ContactUs />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUp />}></Route>
         <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/add-reviews' element={<AddReview />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
