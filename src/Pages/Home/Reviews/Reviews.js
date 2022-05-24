@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const Reviews = () => {
-    const { isLoading, error, data: reviews } = useQuery('', () =>
+    const { isLoading, error, data: reviews } = useQuery('reviews', () =>
         fetch('http://localhost:5000/reviews')
             .then(res => res.json()
             )
@@ -24,7 +24,7 @@ const Reviews = () => {
             <p className='text-center mb-16'>Customer's satisfaction is our main priority & always on top,<br />so we try our best to improve our services & user experience at all times.</p>
             <div className='px-10 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
                 {
-                    reviews.map(review =>
+                    reviews?.map(review =>
                         <div key={review._id} className="rounded-2xl flex items-center bg-base-100 shadow-xl">
                             <div className='px-5 border-r'>
                                 <div className="avatar">

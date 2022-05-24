@@ -1,9 +1,15 @@
 import React from 'react';
 import './Products.css';
+import { useNavigate } from 'react-router-dom';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { useQuery } from 'react-query';
 
 const Products = () => {
+    const navigate = useNavigate();
+    const navigateToPurchase = _id => {
+        navigate(`purchase/${_id}`)
+    }
+
     const { isLoading, error, data: products } = useQuery('repoData', () =>
         fetch('http://localhost:5000/products')
             .then(res => res.json()
@@ -37,7 +43,7 @@ const Products = () => {
                                     <p>Minimum purchase limit: {product.minimum_quantity}</p>
                                     <h2 className="card-title">Price: €{product.price}/product</h2>
                                     <div className="card-actions">
-                                        <button className="w-full lg:w-80 md:w-80 btn btn-primary rounded-full">Purchase Now</button>
+                                        <button onClick={() => navigateToPurchase(product._id)} className="w-full lg:w-80 md:w-80 btn btn-primary rounded-full">Purchase Now</button>
                                     </div>
                                 </div>
                             </div>
