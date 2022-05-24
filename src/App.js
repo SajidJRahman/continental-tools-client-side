@@ -17,7 +17,7 @@ import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
 import Purchase from './Pages/Purchase/Purchase/Purchase';
-
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 const App = () => {
   return (
@@ -41,6 +41,7 @@ const App = () => {
             <Purchase />
           </RequireAuth>} />
         <Route path='/blogs' element={<Blogs />} />
+        <Route path='/my-portfolio' element={<MyPortfolio />} />
         <Route path='/contact-us' element={<ContactUs />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>

@@ -11,23 +11,33 @@ const ContactUs = () => {
     } = useForm();
 
     const onSubmit = data => {
-        toast.success("We've received your message, we'll get back to you shortly", {
-            position: "top-center",
-            autoClose: 2500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        reset({
-            first: '',
-            last: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: ''
-        });
+        fetch('http://localhost:5000/contact-us', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                toast.success("We've received your message, we'll get back to you shortly", {
+                    position: "top-center",
+                    autoClose: 2500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                reset({
+                    first: '',
+                    last: '',
+                    email: '',
+                    phone: '',
+                    subject: '',
+                    message: ''
+                });
+            })
     }
 
     return (
