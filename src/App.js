@@ -12,7 +12,10 @@ import NotFound from './Pages/NotFound/NotFound';
 import ResetPassword from './Pages/Authentications/ResetPassword/ResetPassword';
 import RequireAuth from './Pages/Authentications/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
+import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
+import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+
 
 const App = () => {
   return (
@@ -25,14 +28,17 @@ const App = () => {
         <Route path='/dashboard' element={
           <RequireAuth>
             <Dashboard />
-          </RequireAuth>} />
+          </RequireAuth>} >
+          <Route index element={<MyOrders />} />
+          <Route path='add-review' element={<AddReview />} />
+          <Route path='profile' element={<MyProfile />} />
+        </Route>
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/contact-us' element={<ContactUs />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUp />}></Route>
         <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/add-reviews' element={<AddReview />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

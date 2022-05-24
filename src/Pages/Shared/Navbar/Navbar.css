@@ -1,14 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+/* font Lobster */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .navbar-title {
-    font-family: 'Niconne', cursive;
-    font-size: 35px;
-    border: 1px solid;
-}
-
-.navbar-title svg {
-    width: 33px;
-    border-right: 1px solid black;
-    margin-right: 7px;
-    padding-right: 7px;
+    font-family: 'Lobster', cursive;
 }

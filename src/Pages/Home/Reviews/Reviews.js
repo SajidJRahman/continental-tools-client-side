@@ -37,7 +37,7 @@ const Reviews = () => {
                                 <div className="card-body pl-4">
                                     <h2 className="card-title">{review.name}</h2>
                                     <div className="badge">{review.title}</div>
-                                    <p className='mb-5'>Rated <span className='text-orange-300 font-bold text-[20px]'>{review.stars}</span>/<span className='font-bold text-[20px]'>5</span></p>
+                                    <p className='mb-5'>Rated us <span className='text-orange-300 font-bold text-[30px]'>{review.stars}</span><span className='text-[20px]'>/</span><span className='font-bold text-[20px]'>5</span></p>
                                     <p>{review.description}</p>
 
                                     <div className="card-actions justify-end">

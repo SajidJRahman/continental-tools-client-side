@@ -1,8 +1,6 @@
 import React from 'react';
 import './AddReview.css';
 import { useForm } from "react-hook-form";
-import { useQuery } from 'react-query';
-import Spinner from '../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
 
 const AddReview = () => {
