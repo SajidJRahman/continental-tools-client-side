@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
           </RequireAuth>} >
           <Route index element={<MyOrders />} />
           <Route path='add-review' element={<AddReview />} />
+          <Route path='my-reviews' element={<MyReviews />} />
           <Route path='profile' element={<MyProfile />} />
         </Route>
         <Route path='/blogs' element={<Blogs />} />

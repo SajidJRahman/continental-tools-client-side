@@ -2,8 +2,12 @@ import React from 'react';
 import './AddReview.css';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const AddReview = () => {
+    const [user] = useAuthState(auth);
+
     const {
         register,
         handleSubmit,
@@ -65,7 +69,13 @@ const AddReview = () => {
                         <label className="label">
                             <span className="label-text">Rating</span>
                         </label>
-                        <input type="number" min="1" max="5" {...register('stars', { required: true })} placeholder="password" className="input input-bordered" />
+                        <input type="number" min="1" max="5" {...register('stars', { required: true })} placeholder="only enter 1 - 5 numbers" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="email" {...register('email')} value={user.email} placeholder="email" className="input input-bordered" />
                     </div>
                     <div className="form-control">
                         <label className="label">
