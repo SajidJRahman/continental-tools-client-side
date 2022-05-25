@@ -18,6 +18,7 @@ import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
 import Purchase from './Pages/Purchase/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Footer from './Pages/Shared/Footer/Footer';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
