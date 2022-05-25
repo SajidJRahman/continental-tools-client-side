@@ -10,7 +10,7 @@ const MyReviews = () => {
 
     const currentUser = user.email;
 
-    const { isLoading, error, data: reviews } = useQuery('', () =>
+    const { isLoading, error, data: reviews } = useQuery('reviews', () =>
         fetch(`http://localhost:5000/my-reviews?email=${currentUser}`)
             .then(res => res.json()
             )

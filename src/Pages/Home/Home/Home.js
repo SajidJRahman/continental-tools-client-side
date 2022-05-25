@@ -15,7 +15,6 @@ const Home = () => {
             <BusinessSummery />
             <Reviews />
             <Newsletter />
-            <Footer />
         </div>
     );
 };

@@ -36,6 +36,7 @@ const App = () => {
           <Route path='add-review' element={<AddReview />} />
           <Route path='my-reviews' element={<MyReviews />} />
           <Route path='profile' element={<MyProfile />} />
+          <Route path='my-orders' element={<MyOrders />} />
         </Route>
         <Route path='/purchase/:id' element={
           <RequireAuth>
