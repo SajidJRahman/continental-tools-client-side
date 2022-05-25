@@ -31,8 +31,8 @@ const MyOrders = () => {
                     orders.length === 0 ? "You haven't placed any orders yet" : 'These are the orders you placed'
                 }
             </p>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -46,9 +46,9 @@ const MyOrders = () => {
                             orders.map((order, index) =>
                                 <tr key={order._id}>
                                     <th>{index + 1}</th>
-                                    <td>{order.name}</td>
+                                    <td>{order.product_name}</td>
                                     <td>{order.quantity}</td>
-                                    <td>{order?.price}/products</td>
+                                    <td>{order.product_price}/products</td>
                                 </tr>
                             )
                         }

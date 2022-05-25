@@ -19,7 +19,7 @@ const Reviews = () => {
     }
 
     return (
-        <div className='py-16'>
+        <div className='py-16' id='reviews'>
             <h1 className='text-4xl font-bold text-center mb-2'>Happy Customers Said</h1>
             <p className='text-center mb-16'>Customer's satisfaction is our main priority & always on top,<br />so we try our best to improve our services & user experience at all times.</p>
             <div className='px-10 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>

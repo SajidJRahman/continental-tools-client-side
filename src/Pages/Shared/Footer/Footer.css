@@ -1,4 +1,11 @@
+/* font Lobster */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 .footer-social svg {
     border-radius: 5px;
     background-color: white;
+}
+
+.footer-main-title {
+    font-family: 'Lobster', cursive;
 }

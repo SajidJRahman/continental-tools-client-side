@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 const Products = () => {
     const navigate = useNavigate();
     const navigateToPurchase = _id => {
-        navigate(`purchase/${_id}`)
+        navigate(`/purchase/${_id}`)
     }
 
     const { isLoading, error, data: products } = useQuery('repoData', () =>

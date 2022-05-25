@@ -6,14 +6,14 @@ const Footer = () => {
     return (
         <footer className="footer p-10 py-20 bg-[#000c26] text-white">
             <Link to='/'>
-                <h1 className='text-4xl'>Continental Tools</h1>
+                <h1 className="btn btn-ghost rounded-full normal-case text-[27px] text-[#7f8592] border border-[#7f8592] w-[258px] lg:text-3xl lg:w-60 footer-main-title">Continental Tools</h1>
             </Link>
             <div>
                 <span className="footer-title">Services</span>
                 <Link to='/' className="link link-hover">Home</Link>
-                <Link to='/' className="link link-hover">Tools</Link>
-                <Link to='/' className="link link-hover">Marketing</Link>
-                <Link to='/' className="link link-hover">Advertisement</Link>
+                <Link to='/home#products' className="link link-hover">Products</Link>
+                <Link to='/home#reviews' className="link link-hover">Reviews</Link>
+                <Link to='/my-portfolio' className="link link-hover">My Portfolio</Link>
             </div>
             <div>
                 <span className="footer-title">Quick Links</span>

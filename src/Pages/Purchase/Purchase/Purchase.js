@@ -38,6 +38,7 @@ const Purchase = () => {
     }
 
     const {
+        _id,
         name,
         image,
         price,
@@ -132,6 +133,10 @@ const Purchase = () => {
                             <p>{description}</p>
                             <p>Available in stock: <b>{quantity}</b> pieces</p>
                             <p>Minimum order quantity: <b>{minimum_quantity}</b> pieces</p>
+                            <input type="hidden" {...register('product_name')} name="product_name" value={name} />
+                            <input type="hidden" {...register('product_image')} name="product_image" value={image} />
+                            <input type="hidden" {...register('product_price')} name="product_price" value={price} />
+                            <input type="hidden" {...register('product_id')} name="product_id" value={_id} />
                             <h2 className="text-lg">Price: €<span className='text-2xl font-bold'>{price}</span>/item</h2>
                             <div className="text-center flex items-center">
                                 <button onClick={minus} disabled={buttonMinusDisabled} className="btn btn-primary rounded-r-none">-</button>

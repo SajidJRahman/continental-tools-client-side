@@ -44,7 +44,8 @@ const AddReview = () => {
     }
 
     return (
-        <div>
+        <div className='pt-5'>
+            <h1 className='text-4xl font-bold text-center mb-16'>Add a Review</h1>
             <div className="card card-compact mx-auto w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <div className="form-control">
