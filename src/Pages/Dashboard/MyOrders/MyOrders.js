@@ -14,7 +14,7 @@ const MyOrders = () => {
     const currentUser = user.email;
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders?email=${currentUser}`)
+        fetch(`http://localhost:5000/my-orders?email=${currentUser}`)
             .then(res => res.json())
     )
     refetch();

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Newsletter.css';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
 
 const Newsletter = () => {
     const { register, handleSubmit, reset } = useForm();
+    const [showSpinner, setShowSpinner] = useState();
 
     const onSubmit = data => {
+        setShowSpinner(<SpinnerSecondary />);
         fetch('http://localhost:5000/newsletter', {
             method: 'POST',
             headers: {
@@ -27,6 +30,7 @@ const Newsletter = () => {
             draggable: true,
             progress: undefined,
         });
+        setShowSpinner();
         reset({
             email: ''
         });
@@ -46,9 +50,18 @@ const Newsletter = () => {
                     <h4 className="card-title">SUBSCRIBE</h4>
                     <p className='text-gray-500'>Subscribe to our newsletter & stay updated!</p>
                     <div className="card-actions">
-                        <div className='flex'>
-                            <input type="email" name="email" {...register('email', { required: true })} className="input input-bordered rounded-tl-full rounded-bl-full w-full max-w-xs" id="" placeholder='Enter Email' />
-                            <button onClick={handleSubmit(onSubmit)} className='btn bg-gradient-to-t from-[#4099ff] to-[#afdffc] border-none rounded-tr-full rounded-br-full px-8 m-0'>Submit</button>
+                        <div>
+                            {
+                                showSpinner ?
+                                    <div >
+                                        {showSpinner}
+                                    </div>
+                                    :
+                                    <div className='flex'>
+                                        <input type="email" name="email" {...register('email', { required: true })} className="input input-bordered rounded-tl-full rounded-bl-full w-full max-w-xs" id="" placeholder='Enter Email' />
+                                        <button onClick={handleSubmit(onSubmit)} className='btn bg-gradient-to-t from-[#4099ff] to-[#afdffc] border-none rounded-tr-full rounded-br-full px-8 m-0'>Submit</button>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </div>

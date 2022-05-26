@@ -7,6 +7,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 import { toast } from 'react-toastify';
+import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
 
 const CheckoutForm = ({ orders }) => {
     const stripe = useStripe();
@@ -15,6 +16,7 @@ const CheckoutForm = ({ orders }) => {
     const [success, setSuccess] = useState(false);
     const [transectionId, setTransectionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [showSpinner, setShowSpinner] = useState();
 
     const {
         _id,
@@ -41,6 +43,7 @@ const CheckoutForm = ({ orders }) => {
 
     const handleSubmit = async event => {
         event.preventDefault();
+        setShowSpinner(<SpinnerSecondary />);
         if (!stripe || !elements) {
             return;
         }
@@ -93,6 +96,7 @@ const CheckoutForm = ({ orders }) => {
                 draggable: true,
                 progress: undefined,
             });
+            setShowSpinner();
 
             const paymentInfo = {
                 orders: _id,
@@ -136,9 +140,16 @@ const CheckoutForm = ({ orders }) => {
                         <span className='label-text-alt text-green-500 font-bold ml-1'>{transectionId}</span>
                     </label>
                 }
-                <button type="submit" className='btn btn-outline btn-sm btn-success w-full rounded-full mt-[62px]' disabled={!stripe || !clientSecret || success}>
-                    Place Order
-                </button>
+                {
+                    showSpinner ?
+                        <div className='mt-10'>
+                            {showSpinner}
+                        </div>
+                        :
+                        <button type="submit" className='btn btn-outline btn-sm btn-success w-full rounded-full mt-[62px]' disabled={!stripe || !clientSecret || success}>
+                            Place Order
+                        </button>
+                }
             </form>
             {
                 paymentError &&

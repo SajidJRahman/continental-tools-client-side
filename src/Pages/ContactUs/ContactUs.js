@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ContactUs.css';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import SpinnerSecondary from '../Shared/SpinnerSecondary/SpinnerSecondary';
+import { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
+    const [showSpinner, setShowSpinner] = useState();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
@@ -11,6 +16,7 @@ const ContactUs = () => {
     } = useForm();
 
     const onSubmit = data => {
+        setShowSpinner(<SpinnerSecondary />);
         fetch('http://localhost:5000/contact-us', {
             method: 'POST',
             headers: {
@@ -29,6 +35,7 @@ const ContactUs = () => {
                     draggable: true,
                     progress: undefined,
                 });
+                setShowSpinner();
                 reset({
                     first: '',
                     last: '',
@@ -38,11 +45,12 @@ const ContactUs = () => {
                     message: ''
                 });
             })
+        navigate('/home');
     }
 
     return (
         <div className="hero bg-base-200 font-poppins">
-            <div className="hero-content bg-primary p-0 gap-0 m-10 rounded-[1rem] shadow-2xl flex-col lg:flex-row">
+            <div className="hero-content bg-primary p-0 gap-0 m-5 lg:m-10 rounded-[1rem] shadow-2xl flex-col lg:flex-row">
                 <div className='p-8 h-full w-full'>
                     <h1 className='text-2xl text-white'>Contact Information</h1>
                     <p className='text-gray-200 mt-5'>Need our help? Or do you have suggestions for us? Just contact us by our phone or email, or you can submit your information & we'll get back you as soon as possible.</p>
@@ -126,7 +134,14 @@ const ContactUs = () => {
                             <textarea className="textarea textarea-bordered h-24" {...register('message', { required: true })} placeholder="Message"></textarea>
                         </div>
                         <div className="form-control mt-6">
-                            <button onClick={handleSubmit(onSubmit)} className="btn btn-primary">Submit</button>
+                            {
+                                showSpinner ?
+                                    <div >
+                                        {showSpinner}
+                                    </div>
+                                    :
+                                    <button onClick={handleSubmit(onSubmit)} className="btn btn-primary">Submit</button>
+                            }
                         </div>
                     </div>
                 </div>

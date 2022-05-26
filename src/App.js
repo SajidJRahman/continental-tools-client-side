@@ -20,6 +20,7 @@ import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
 import Purchase from './Pages/Purchase/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Footer from './Pages/Shared/Footer/Footer';
+import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 
 const App = () => {
   return (

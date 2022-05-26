@@ -43,7 +43,7 @@ const Products = () => {
                         <div key={product._id} >
                             <div style={{ boxShadow: '0 0 0, 0 0 10px #e2e2e2' }} className="card w-full h-full bg-base-100 mx-auto">
                                 <div className="card lg:card-side bg-base-100 shadow-xl card w-full h-full">
-                                    <figure><img src={product.image} alt="" /></figure>
+                                    <figure><img className='rounded-lg' src={product.image} alt="" /></figure>
                                     <div className="card-body">
                                         <h2 className="card-title">{product.name}</h2>
                                         <p>{product.description}</p>

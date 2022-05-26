@@ -55,10 +55,10 @@ const ResetPassword = () => {
     }
 
     return (
-        <div className="hero py-44 bg-gradient-to-r from-[#2fbfc7] to-[#00008b]">
-            <div className="card w-80 lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
+        <div className="hero py-5 lg:py-44 px-5 bg-gradient-to-r from-[#2fbfc7] to-[#00008b]">
+            <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">
-                    <h1 className='text-center text-3xl lg:text-4xl'>Reset Password</h1>
+                    <h1 className='text-center text-3xl lg:text-3xl font-semibold'>Reset Password</h1>
 
                     <div className="form-control">
                         <label className="label">

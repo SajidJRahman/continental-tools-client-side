@@ -5,11 +5,13 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
     const [reviewButton, setReviewButton] = useState(false);
     const [errorRating, setErrorRating] = useState('');
+    const [showSpinner, setShowSpinner] = useState();
     const navigate = useNavigate();
 
     const {
@@ -19,6 +21,7 @@ const AddReview = () => {
     } = useForm();
 
     const onSubmit = data => {
+        setShowSpinner(<SpinnerSecondary />);
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
@@ -37,6 +40,7 @@ const AddReview = () => {
                     draggable: true,
                     progress: undefined,
                 });
+                setShowSpinner();
                 navigate('/home')
                 reset({
                     image: '',
@@ -71,9 +75,9 @@ const AddReview = () => {
 
             <div className="card lg:card-side bg-base-100 shadow-xl p-10">
                 <div className="form-control">
-                    <textarea className="textarea textarea-bordered w-96 h-full text-center py-36" {...register('image', { required: true })} placeholder="Paste your image link" defaultValue='https://cdn.lorem.space/images/face/.cache/500x0/jake-fagan-Y7C7F26fzZM-unsplash.jpg'></textarea>
+                    <textarea className="textarea textarea-bordered w-full lg:w-96 w-full lg:h-full text-center py-36" {...register('image', { required: true })} placeholder="Paste your image link" defaultValue='https://cdn.lorem.space/images/face/.cache/500x0/jake-fagan-Y7C7F26fzZM-unsplash.jpg'></textarea>
                 </div>
-                <div className="card-body py-0">
+                <div className="card-body py-0 px-0 lg:pl-8">
                     <input type="hidden" {...register('name', { required: true })} value={user.displayName} placeholder="name" className="input input-bordered" name="name" />
                     <div className="form-control">
                         <label className="label">
@@ -98,7 +102,14 @@ const AddReview = () => {
                         <textarea className="textarea textarea-bordered h-18" {...register('description', { required: true })} placeholder="message"></textarea>
                     </div>
                     <div className="form-control mt-3">
-                        <button onClick={handleSubmit(onSubmit)} disabled={reviewButton} className="btn btn-primary">Post Review</button>
+                        {
+                            showSpinner ?
+                                <div >
+                                    {showSpinner}
+                                </div>
+                                :
+                                <button onClick={handleSubmit(onSubmit)} disabled={reviewButton} className="btn btn-primary">Post Review</button>
+                        }
                     </div>
                 </div>
             </div>

@@ -70,10 +70,10 @@ const SignUp = () => {
     }
 
     return (
-        <div className="hero py-32 bg-gradient-to-r from-secondary to-primary">
-            <div className="card w-80 lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
+        <div className="hero py-5 lg:py-16 px-5 bg-gradient-to-r from-secondary to-primary">
+            <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">
-                    <h1 className='text-center text-3xl mb-5 lg:text-4xl'>Sign Up</h1>
+                    <h1 className='text-center text-3xl mb-5 lg:text-3xl font-semibold'>Sign Up</h1>
 
                     <div className='flex mx-auto'>
                         <button onClick={() => signInWithGoogle()} className='btn-social py-2 px-12 lg:px-16 sm:px-12 mr-3 rounded-lg flex items-center justify-center'>

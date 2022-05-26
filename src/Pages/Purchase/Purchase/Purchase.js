@@ -7,10 +7,12 @@ import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
 
 const Purchase = () => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [errorQuantity, setErrorQuantity] = useState('');
+    const [showSpinner, setShowSpinner] = useState();
     const navigate = useNavigate();
 
     const [user] = useAuthState(auth);
@@ -53,37 +55,6 @@ const Purchase = () => {
         minimum_quantity
     } = products;
 
-    const onSubmit = data => {
-        fetch('http://localhost:5000/orders', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                navigate('/home');
-                toast.success('Order placed successfully!', {
-                    position: "top-center",
-                    autoClose: 2500,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-                reset({
-                    quantity: '',
-                    phone: '',
-                    address: '',
-                    city: '',
-                    zip: '',
-                    country: ''
-                });
-            })
-    }
-
     const handleQuantity = event => {
         if (event.target.value === '') {
             setButtonDisabled(true);
@@ -114,11 +85,44 @@ const Purchase = () => {
         }
     }
 
+    const onSubmit = data => {
+        setShowSpinner(<SpinnerSecondary />);
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                navigate('/home');
+                toast.success('Order placed successfully!', {
+                    position: "top-center",
+                    autoClose: 2500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setShowSpinner();
+                reset({
+                    quantity: '',
+                    phone: '',
+                    address: '',
+                    city: '',
+                    zip: '',
+                    country: ''
+                });
+            })
+    }
+
     return (
         <div className="hero bg-base-200 font-poppins">
-            <div className="hero-content p-0 gap-0 m-10 shadow-2xl rounded-[1rem] flex-col lg:flex-row">
+            <div className="hero-content p-0 gap-0 m-5 lg:m-10 shadow-2xl rounded-[1rem] flex-col lg:flex-row">
                 <div className='h-full w-full'>
-                    <div className="card card-compact border-r-0 lg:border-r py-5 mx-auto w-full h-[544px] rounded-tl-[1rem] lg:rounded-tl-[1rem] rounded-tr-[1rem] lg:rounded-tr-none rounded-bl-none lg:rounded-bl-[1rem] rounded-br-none bg-base-100">
+                    <div className="card card-compact border-r-0 lg:border-r py-0 lg:py-5 mx-auto w-full h-[544px] rounded-tl-[1rem] lg:rounded-tl-[1rem] rounded-tr-[1rem] lg:rounded-tr-none rounded-bl-none lg:rounded-bl-[1rem] rounded-br-none bg-base-100">
                         <figure><img className='rounded-[1rem]' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{name}</h2>
@@ -158,14 +162,14 @@ const Purchase = () => {
                                 <label className="label">
                                     <span className="label-text font-bold">Email</span>
                                 </label>
-                                <input type="email" {...register('email', { required: true })} value={user.email} placeholder="Email" className="w-full lg:w-[280px] input input-bordered" readOnly />
+                                <input type="email" {...register('email', { required: true })} value={user.email} placeholder="Email" className="w-full input input-bordered" readOnly />
                             </div>
                             <div className='lg:ml-2'>
                                 <label className="label">
                                     <span className="label-text font-bold">Phone</span>
                                     <span className="label-text-alt font-bold text-gray-400">Optional</span>
                                 </label>
-                                <input type="tel" {...register('phone')} placeholder="Phone" className="w-full lg:w-[280px] input input-bordered" />
+                                <input type="tel" {...register('phone')} placeholder="Phone" className="w-full input input-bordered" />
                             </div>
                         </div>
                         <div className="form-control">
@@ -195,7 +199,14 @@ const Purchase = () => {
                             </div>
                         </div>
                         <div className="form-control mt-6">
-                            <button onClick={handleSubmit(onSubmit)} disabled={buttonDisabled} className="btn btn-primary">Order</button>
+                            {
+                                showSpinner ?
+                                    <div >
+                                        {showSpinner}
+                                    </div>
+                                    :
+                                    <button onClick={handleSubmit(onSubmit)} disabled={buttonDisabled} className="btn btn-primary">Order</button>
+                            }
                         </div>
                     </div>
                 </div>
