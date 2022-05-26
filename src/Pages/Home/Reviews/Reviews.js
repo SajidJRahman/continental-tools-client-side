@@ -2,6 +2,7 @@ import React from 'react';
 import './Reviews.css';
 import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 const Reviews = () => {
     const { isLoading, error, data: reviews } = useQuery('reviews', () =>
@@ -15,14 +16,22 @@ const Reviews = () => {
     }
 
     if (error) {
-        alert(error);
+        toast.error(error, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     return (
-        <div className='py-16' id='reviews'>
-            <h1 className='text-4xl font-bold text-center mb-2'>Happy Customers Said</h1>
-            <p className='text-center mb-16'>Customer's satisfaction is our main priority & always on top,<br />so we try our best to improve our services & user experience at all times.</p>
-            <div className='px-10 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
+        <div className='pb-5 pt-16 lg:pb-16' id='reviews'>
+            <h1 className='text-3xl lg:text-4xl font-bold text-center mb-2'>Happy Customers Said</h1>
+            <p className='text-center mb-16 px-5'>Customer's satisfaction is our main priority & always on top,<br />so we try our best to improve our services & user experience at all times.</p>
+            <div className='px-5 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
                 {
                     reviews?.map(review =>
                         <div key={review._id} className="rounded-2xl flex items-center bg-base-100 shadow-xl">

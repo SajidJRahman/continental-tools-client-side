@@ -6,7 +6,7 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
+            <div className="drawer-content bg-gradient-to-t from-[#4099ff] to-[#afdffc]">
                 <Outlet />
             </div>
             <div className="drawer-side">

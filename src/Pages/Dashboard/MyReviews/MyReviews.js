@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 
 const MyReviews = () => {
     const [user] = useAuthState(auth);
@@ -21,18 +22,26 @@ const MyReviews = () => {
     }
 
     if (error) {
-        alert(error);
+        toast.error(error, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     return (
-        <div className='pt-5'>
+        <div className='pt-10 pb-5 lg:pb-10'>
             <h1 className='text-4xl font-bold text-center mb-2'>My Reviews</h1>
-            <p className='text-center mb-16'>
+            <p className='text-center mb-12 font-semibold'>
                 {
-                    reviews.length === 0 ? "You haven't added any reviws yet" : 'These are the reviews added by you'
+                    reviews.length === 0 ? "You haven't added any reviews yet" : 'These are the reviews added by you'
                 }
             </p>
-            <div className='px-10 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1'>
+            <div className='px-5 lg:px-10 lg:px-14 md:px-14 grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1'>
                 {
                     reviews.map(review =>
                         <div key={review._id} className="rounded-2xl flex items-center bg-base-100 shadow-xl">

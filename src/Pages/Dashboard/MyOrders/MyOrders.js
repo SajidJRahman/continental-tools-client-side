@@ -4,8 +4,9 @@ import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 import './MyOrders.css';
-import { toast } from 'react-toastify';
 import ActionModal from '../ActionModal/ActionModal';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
@@ -23,13 +24,21 @@ const MyOrders = () => {
     }
 
     if (error) {
-        alert(error);
+        toast.error(error, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     return (
-        <div className='pt-5'>
+        <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-10'>
             <h1 className='text-4xl font-bold text-center mb-2'>My Orders</h1>
-            <p className='text-center mb-16'>
+            <p className='text-center mb-12 font-semibold'>
                 {
                     orders.length === 0 ? "You haven't placed any orders yet" : 'These are the orders you placed'
                 }
@@ -44,6 +53,8 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Action</th>
+                            <th>Status</th>
+                            <th>Transection Id</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +73,30 @@ const MyOrders = () => {
                                     <td><span className='font-semibold'>{order.quantity}</span></td>
                                     <td><span className='font-bold'>{order.product_price}</span><span className='font-semibold'>/piece</span></td>
                                     <td>
-                                        <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
+                                        {(
+                                            order.product_price && !order.paid) &&
+                                            <Link to={`/dashboard/payment/${order._id}`}>
+                                                <button className="btn btn-outline btn-sm btn-info rounded-full mr-3">Pay Now</button>
+                                            </Link>
+                                        }
+                                        {(
+                                            !order.transectionId &&
+                                            <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
+                                        )}
+                                    </td>
+                                    <td><span className='font-bold text-info'>
+                                        {(order.product_price && order.paid) ?
+                                            <div className="badge badge-accent text-white btn-sm font-bold">Paid</div>
+                                            :
+                                            <div className="badge text-white btn-sm font-bold">Unpaid</div>
+                                        }
+                                    </span></td>
+                                    <td>
+                                        {order.transectionId ?
+                                            <span className='font-bold text-info'>{order?.transectionId}</span>
+                                            :
+                                            <span className='font-bold text-info'>{order?.transectionId}</span>
+                                        }
                                     </td>
                                 </tr>
                             )
@@ -77,7 +111,7 @@ const MyOrders = () => {
                     refetch={refetch}
                 />
             }
-        </div>
+        </div >
     );
 };
 

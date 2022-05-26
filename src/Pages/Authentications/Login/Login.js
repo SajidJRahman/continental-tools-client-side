@@ -55,7 +55,7 @@ const Login = () => {
     }
 
     if (errorGoogle || errorGitHub || error) {
-        console.log(errorGoogle || errorGitHub || error);
+        alert(errorGoogle || errorGitHub || error.message);
     }
 
     const onSubmit = async data => {

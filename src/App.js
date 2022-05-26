@@ -13,6 +13,7 @@ import ResetPassword from './Pages/Authentications/ResetPassword/ResetPassword';
 import RequireAuth from './Pages/Authentications/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
+import Payment from './Pages/Dashboard/Payment/Payment';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import MyReviews from './Pages/Dashboard/MyReviews/MyReviews';
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='my-reviews' element={<MyReviews />} />
           <Route path='profile' element={<MyProfile />} />
           <Route path='my-orders' element={<MyOrders />} />
+          <Route path='payment/:id' element={<Payment />} />
         </Route>
         <Route path='/purchase/:id' element={
           <RequireAuth>

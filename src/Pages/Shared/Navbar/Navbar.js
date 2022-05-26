@@ -36,7 +36,7 @@ const Navbar = () => {
                         {
                             user?.photoURL &&
                             <div className="avatar">
-                                <div className="w-10 mt-3 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <div className="w-10 mt-3 mx-auto rounded-full ring ring-[#4099ff] ring-offset-base-100 ring-offset-2">
                                     <img src={user?.photoURL} alt="" />
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ const Navbar = () => {
                 {
                     user?.photoURL &&
                     <div className="avatar hidden lg:flex">
-                        <div className="w-10 mr-1 lg:mr-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <div className="w-10 mr-1 lg:mr-5 rounded-full ring ring-[#4099ff] ring-offset-base-100 ring-offset-2">
                             <img src={user?.photoURL} alt="" />
                         </div>
                     </div>

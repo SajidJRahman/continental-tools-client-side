@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Purchase.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { useForm } from 'react-hook-form';
@@ -9,11 +9,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 
 const Purchase = () => {
-    const [quantityNumbers, setQuantityNumbers] = useState();
     const [buttonDisabled, setButtonDisabled] = useState(false);
-    const [buttonPlusDisabled, setButtonPlusDisabled] = useState(false);
-    const [buttonMinusDisabled, setButtonMinusDisabled] = useState(false);
     const [errorQuantity, setErrorQuantity] = useState('');
+    const navigate = useNavigate();
 
     const [user] = useAuthState(auth);
     const { id } = useParams();
@@ -34,7 +32,15 @@ const Purchase = () => {
     }
 
     if (error) {
-        alert(error);
+        toast.error(error, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     const {
@@ -57,6 +63,7 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(result => {
+                navigate('/home');
                 toast.success('Order placed successfully!', {
                     position: "top-center",
                     autoClose: 2500,
@@ -78,8 +85,6 @@ const Purchase = () => {
     }
 
     const handleQuantity = event => {
-        setQuantityNumbers(event.target.value);
-
         if (event.target.value === '') {
             setButtonDisabled(true);
             setErrorQuantity('Please add order quantity!');
@@ -87,7 +92,6 @@ const Purchase = () => {
         }
 
         if (event.target.value < minimum_quantity) {
-            setButtonMinusDisabled(true);
             setButtonDisabled(true);
             setErrorQuantity(`You cannot order beyond minimum ${minimum_quantity} pieces`);
             return
@@ -95,31 +99,19 @@ const Purchase = () => {
 
         if (event.target.value >= minimum_quantity) {
             setButtonDisabled(false);
-            setButtonMinusDisabled(false);
             setErrorQuantity('');
         }
 
         if (event.target.value > quantity) {
             setButtonDisabled(true);
-            setButtonPlusDisabled(true);
             setErrorQuantity(`You cannot order more than maximum ${quantity} pieces`);
             return
         }
 
         if (event.target.value <= quantity) {
             setButtonDisabled(false);
-            setButtonPlusDisabled(false);
             setErrorQuantity('');
         }
-
-    }
-
-    const plus = () => {
-        setQuantityNumbers(quantityNumbers + 1)
-    }
-
-    const minus = () => {
-        setQuantityNumbers(quantityNumbers - 1)
     }
 
     return (
@@ -139,14 +131,12 @@ const Purchase = () => {
                             <input type="hidden" {...register('product_id')} name="product_id" value={_id} />
                             <h2 className="text-lg">Price: €<span className='text-2xl font-bold'>{price}</span>/item</h2>
                             <div className="text-center flex items-center">
-                                <button onClick={minus} disabled={buttonMinusDisabled} className="btn btn-primary rounded-r-none">-</button>
                                 <input
                                     {...register('quantity', { required: true })}
                                     onChange={handleQuantity}
                                     type="number"
-                                    className="w-full font-bold input input-bordered rounded-none text-center" min='1' value={quantityNumbers}
+                                    className="w-full font-bold input input-bordered rounded-md text-center" min='1' defaultValue={minimum_quantity}
                                     placeholder='Enter Your Quantity' />
-                                <button onClick={plus} disabled={buttonPlusDisabled} className="btn btn-primary rounded-l-none">+</button>
                             </div>
                             <label className='label pb-0'>
                                 <span className='label-text-alt text-red-500'>{errorQuantity}</span>

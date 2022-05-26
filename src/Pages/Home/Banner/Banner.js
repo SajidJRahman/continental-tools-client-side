@@ -12,7 +12,9 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Welcome To Continental Tools</h1>
                     <p className="mb-5">The home for all the tools you need. Need decent amount of tools? You're at the right place!</p>
-                    <button className="btn btn-primary px-8">View Items</button>
+                    <a href="#products">
+                        <button className="btn btn-primary px-14 rounded-full">View Items</button>
+                    </a>
                 </div>
             </div>
         </div >
