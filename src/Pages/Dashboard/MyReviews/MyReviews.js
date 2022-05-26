@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MyReviews.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
+import ActionReviewsModal from '../ActionReviewsModal/ActionReviewsModal';
 
 const MyReviews = () => {
     const [user] = useAuthState(auth);
-
     const currentUser = user.email;
+    const [reviewAction, setReviewAction] = useState(null);
 
-    const { isLoading, error, data: reviews } = useQuery('reviews', () =>
+    const { isLoading, error, data: reviews, refetch } = useQuery('reviews', () =>
         fetch(`http://localhost:5000/my-reviews?email=${currentUser}`)
             .then(res => res.json()
             )
@@ -60,9 +61,7 @@ const MyReviews = () => {
                                     <p>{review.description}</p>
 
                                     <div className="card-actions justify-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="text-[#fa4764] h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                        </svg>
+                                        <label onClick={() => setReviewAction(review)} htmlFor="action-review-modal" className="btn btn-outline btn-sm btn-error rounded-full">Delete Review</label>
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +69,13 @@ const MyReviews = () => {
                     )
                 }
             </div>
+            {reviewAction &&
+                <ActionReviewsModal
+                    reviewAction={reviewAction}
+                    setReviewAction={setReviewAction}
+                    refetch={refetch}
+                />
+            }
         </div>
     );
 };

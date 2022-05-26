@@ -9,11 +9,6 @@ import ActionProductsModal from '../ActionProductsModal/ActionProductsModal';
 
 const ManageProducts = () => {
     const [productAction, setProductAction] = useState(null);
-    const navigate = useNavigate();
-
-    const navigateToPurchase = _id => {
-        navigate(`/purchase/${_id}`)
-    }
 
     const { isLoading, error, data: products, refetch } = useQuery('manage-products', () =>
         fetch('http://localhost:5000/products')
@@ -55,7 +50,7 @@ const ManageProducts = () => {
                                         <p>Minimum purchase limit: {product.minimum_quantity}</p>
                                         <h2 className="card-title">Price: €{product.price}/piece</h2>
                                         <div className="card-actions w-full">
-                                            <label onClick={() => setProductAction(product)} htmlFor="action-product-modal" className="w-full btn btn-error text-white rounded-full">Delete Item</label>
+                                            <label onClick={() => setProductAction(product)} htmlFor="action-product-modal" className="w-full btn btn-error text-white rounded-full">Delete Review</label>
                                         </div>
                                     </div>
                                 </div>
