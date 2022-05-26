@@ -34,6 +34,28 @@ const ManageAllOrders = () => {
         });
     }
 
+    const handleShipped = _id => {
+        fetch(`http://localhost:5000/manage-order/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Item marked as shipped.', {
+                    position: "top-center",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+            })
+    }
+
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-10'>
             <h1 className='text-4xl font-bold text-center mb-2'>Manage All Orders</h1>
@@ -75,7 +97,7 @@ const ManageAllOrders = () => {
                                         {(
                                             (!order.shipped && order.paid) &&
                                             <div>
-                                                <label onClick={('')} className="btn btn-outline btn-sm btn-info rounded-full">Shipped</label>
+                                                <label onClick={() => handleShipped(order._id)} className="btn btn-outline btn-sm btn-info rounded-full">Shipped</label>
                                             </div>
                                         )}
                                         {

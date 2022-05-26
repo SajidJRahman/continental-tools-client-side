@@ -85,9 +85,10 @@ const MyOrders = () => {
                                         )}
                                     </td>
                                     <td><span className='font-bold text-info'>
-                                        {(order.product_price && order.paid) ?
+                                        {(order.paid && !order.shipped) &&
                                             <div className="badge text-white btn-sm font-bold">Panding</div>
-                                            :
+                                        }
+                                        {(order.product_price && !order.paid) &&
                                             <div className="badge badge-error text-white btn-sm font-bold">Unpaid</div>
                                         }
                                         {
