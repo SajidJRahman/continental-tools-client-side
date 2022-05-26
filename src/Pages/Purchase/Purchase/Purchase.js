@@ -23,7 +23,7 @@ const Purchase = () => {
         reset,
     } = useForm();
 
-    const { isLoading, error, data: products } = useQuery('', () =>
+    const { isLoading, error, data: products } = useQuery('purchase', () =>
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json()
             )

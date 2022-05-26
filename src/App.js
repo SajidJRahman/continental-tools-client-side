@@ -22,6 +22,7 @@ import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Footer from './Pages/Shared/Footer/Footer';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 
 const App = () => {
   return (
