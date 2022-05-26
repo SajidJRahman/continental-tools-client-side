@@ -21,6 +21,7 @@ import Purchase from './Pages/Purchase/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import Footer from './Pages/Shared/Footer/Footer';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 
 const App = () => {
   return (

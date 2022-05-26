@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
+import './ManageAllOrders.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
+import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
-import './MyOrders.css';
-import ActionModal from '../ActionModal/ActionModal';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import ActionModal from '../ActionModal/ActionModal';
 
-const MyOrders = () => {
+const ManageAllOrders = () => {
     const [user] = useAuthState(auth);
     const [orderAction, setOrderAction] = useState(null);
     const currentUser = user.email;
@@ -37,10 +36,10 @@ const MyOrders = () => {
 
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-10'>
-            <h1 className='text-4xl font-bold text-center mb-2'>My Orders</h1>
+            <h1 className='text-4xl font-bold text-center mb-2'>Manage All Orders</h1>
             <p className='text-center mb-12 font-semibold'>
                 {
-                    orders.length === 0 ? "You haven't placed any orders yet" : 'These are the orders you placed'
+                    orders.length === 0 ? "There are no orders yet" : 'These are all the orders that clients placed'
                 }
             </p>
             <div className="overflow-x-auto">
@@ -74,20 +73,23 @@ const MyOrders = () => {
                                     <td><span className='font-bold'>{order.product_price}</span><span className='font-semibold'>/piece</span></td>
                                     <td>
                                         {(
-                                            order.product_price && !order.paid) &&
-                                            <Link to={`/dashboard/payment/${order._id}`}>
-                                                <button className="btn btn-outline btn-sm btn-info rounded-full mr-3">Pay Now</button>
-                                            </Link>
-                                        }
-                                        {(
-                                            !order.transectionId &&
-                                            <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
+                                            (!order.shipped && order.paid) &&
+                                            <div>
+                                                <label onClick={('')} className="btn btn-outline btn-sm btn-info rounded-full">Shipped</label>
+                                            </div>
                                         )}
+                                        {
+                                            !order.paid &&
+                                            <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
+                                        }
                                     </td>
                                     <td><span className='font-bold text-info'>
-                                        {(order.product_price && order.paid) ?
+                                        {
+                                            (!order.shipped && order.paid) &&
                                             <div className="badge text-white btn-sm font-bold">Panding</div>
-                                            :
+                                        }
+                                        {
+                                            !order.paid &&
                                             <div className="badge badge-error text-white btn-sm font-bold">Unpaid</div>
                                         }
                                         {
@@ -117,4 +119,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default ManageAllOrders;
