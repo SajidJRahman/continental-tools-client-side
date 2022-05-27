@@ -23,6 +23,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
+import ManageUsers from './Pages/Dashboard/ManageUsers/ManageUsers';
 
 const App = () => {
   return (
@@ -36,10 +37,11 @@ const App = () => {
           <RequireAuth>
             <Dashboard />
           </RequireAuth>} >
-          <Route index element={<MyOrders />} />
+          <Route index element={<MyProfile />} />
           <Route path='add-review' element={<AddReview />} />
           <Route path='my-reviews' element={<MyReviews />} />
           <Route path='profile' element={<MyProfile />} />
+          <Route path='manage-users' element={<ManageUsers />} />
           <Route path='my-orders' element={<MyOrders />} />
           <Route path='payment/:id' element={<Payment />} />
         </Route>
