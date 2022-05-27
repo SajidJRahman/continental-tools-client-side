@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Spinner from '../../Shared/Spinner/Spinner';
 import './ResetPassword.css';
+import Title from '../../Shared/Title/Title';
 
 const ResetPassword = () => {
     const navigate = useNavigate();
@@ -56,6 +57,7 @@ const ResetPassword = () => {
 
     return (
         <div className="hero py-5 lg:py-44 px-5 bg-gradient-to-r from-[#2fbfc7] to-[#00008b]">
+            <Title title="Reset Password" />
             <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">
                     <h1 className='text-center text-3xl lg:text-3xl font-semibold'>Reset Password</h1>

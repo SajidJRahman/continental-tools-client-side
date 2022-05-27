@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import ActionProductsModal from '../ActionProductsModal/ActionProductsModal';
-
+import Title from '../../Shared/Title/Title';
 
 const ManageProducts = () => {
     const [productAction, setProductAction] = useState(null);
@@ -34,6 +34,7 @@ const ManageProducts = () => {
 
     return (
         <div className='pt-16 pb-5 lg:pb-16 font-poppins' id='products'>
+            <Title title="Manage Products" />
             <h1 className='text-3xl lg:text-4xl font-bold text-center mb-2'>Manage Products</h1>
             <p className='text-center mb-16 px-5'>There are currently {products.length} product on store</p>
             <div className='px-5 lg:px-14 md:px-14 grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1'>

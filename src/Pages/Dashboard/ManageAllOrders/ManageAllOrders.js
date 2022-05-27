@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import ActionModal from '../ActionModal/ActionModal';
+import Title from '../../Shared/Title/Title';
 
 const ManageAllOrders = () => {
     const [user] = useAuthState(auth);
@@ -58,6 +59,7 @@ const ManageAllOrders = () => {
 
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-10'>
+            <Title title="Manage All Orders" />
             <h1 className='text-4xl font-bold text-center mb-2'>Manage All Orders</h1>
             <p className='text-center mb-12 font-semibold'>
                 {

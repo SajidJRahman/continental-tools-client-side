@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
 import './AddProduct.css';
+import Title from '../../Shared/Title/Title';
 
 const AddProduct = () => {
     const [user] = useAuthState(auth);
@@ -19,38 +20,6 @@ const AddProduct = () => {
         handleSubmit,
         reset,
     } = useForm();
-
-    const onSubmit = data => {
-        setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/products', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                toast.success('Product added successfully!', {
-                    position: "top-center",
-                    autoClose: 2500,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-                setShowSpinner();
-                reset({
-                    image: '',
-                    name: '',
-                    price: '',
-                    quantity: '',
-                    minimum_quantity: '',
-                    description: ''
-                });
-            });
-    }
 
     const handlePrice = event => {
         if (event.target.value < 0) {
@@ -88,8 +57,41 @@ const AddProduct = () => {
         };
     }
 
+    const onSubmit = data => {
+        setShowSpinner(<SpinnerSecondary />);
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                toast.success('Product added successfully!', {
+                    position: "top-center",
+                    autoClose: 2500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setShowSpinner();
+                reset({
+                    image: '',
+                    name: '',
+                    price: '',
+                    quantity: '',
+                    minimum_quantity: '',
+                    description: ''
+                });
+            });
+    }
+
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-12'>
+            <Title title="Add Product" />
             <h1 className='text-4xl font-bold text-center mb-2'>Add a Product</h1>
             <p className='text-center mb-12 font-semibold'>Add a new product to store</p>
 

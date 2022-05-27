@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { loadStripe } from '@stripe/stripe-js';
+import Title from '../../Shared/Title/Title';
 import {
     Elements
 } from '@stripe/react-stripe-js';
@@ -39,6 +40,7 @@ const Payment = () => {
 
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-12'>
+            <Title title="Payment" />
             <h1 className='text-4xl font-bold text-center mb-2'>Payment</h1>
             <p className='text-center mb-12 font-semibold'>Complete your order for {orders.product_name}</p>
             <div className="card lg:card-side bg-base-100 shadow-xl">

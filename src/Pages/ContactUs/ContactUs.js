@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import SpinnerSecondary from '../Shared/SpinnerSecondary/SpinnerSecondary';
 import { useNavigate } from 'react-router-dom';
+import Title from '../Shared/Title/Title';
 
 const ContactUs = () => {
     const [showSpinner, setShowSpinner] = useState();
@@ -50,6 +51,7 @@ const ContactUs = () => {
 
     return (
         <div className="hero bg-base-200 font-poppins">
+            <Title title="Contact Us" />
             <div className="hero-content bg-primary p-0 gap-0 m-5 lg:m-10 rounded-[1rem] shadow-2xl flex-col lg:flex-row">
                 <div className='p-8 h-full w-full'>
                     <h1 className='text-2xl text-white'>Contact Information</h1>

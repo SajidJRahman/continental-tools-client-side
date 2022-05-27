@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
+import Title from '../../Shared/Title/Title';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
@@ -70,6 +71,7 @@ const AddReview = () => {
 
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-12'>
+            <Title title="Add Review" />
             <h1 className='text-4xl font-bold text-center mb-2'>Add a Review</h1>
             <p className='text-center mb-12 font-semibold'>Help us improve our services by adding a review</p>
 

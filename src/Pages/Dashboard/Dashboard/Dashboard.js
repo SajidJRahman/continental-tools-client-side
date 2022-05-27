@@ -1,10 +1,12 @@
 import React from 'react';
 import './Dashboard.css';
 import { Link, Outlet } from 'react-router-dom';
+import Title from '../../Shared/Title/Title';
 
 const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
+            <Title title="Dashboard" />
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content bg-gradient-to-t from-[#4099ff] to-[#afdffc]">
                 <Outlet />

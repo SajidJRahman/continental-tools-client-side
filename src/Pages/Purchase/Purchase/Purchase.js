@@ -8,6 +8,7 @@ import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import SpinnerSecondary from '../../Shared/SpinnerSecondary/SpinnerSecondary';
+import Title from '../../Shared/Title/Title';
 
 const Purchase = () => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -120,6 +121,7 @@ const Purchase = () => {
 
     return (
         <div className="hero bg-base-200 font-poppins">
+            <Title title="Purchase" />
             <div className="hero-content p-0 gap-0 m-5 lg:m-10 shadow-2xl rounded-[1rem] flex-col lg:flex-row">
                 <div className='h-full w-full'>
                     <div className="card card-compact border-r-0 lg:border-r py-0 lg:py-5 mx-auto w-full h-[544px] rounded-tl-[1rem] lg:rounded-tl-[1rem] rounded-tr-[1rem] lg:rounded-tr-none rounded-bl-none lg:rounded-bl-[1rem] rounded-br-none bg-base-100">

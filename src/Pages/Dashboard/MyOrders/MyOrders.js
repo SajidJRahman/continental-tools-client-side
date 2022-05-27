@@ -6,16 +6,32 @@ import Spinner from '../../Shared/Spinner/Spinner';
 import './MyOrders.css';
 import ActionModal from '../ActionModal/ActionModal';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Title from '../../Shared/Title/Title';
+import { signOut } from 'firebase/auth';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
     const [orderAction, setOrderAction] = useState(null);
     const currentUser = user.email;
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/my-orders?email=${currentUser}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/my-orders?email=${currentUser}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || 403) {
+                    signOut(auth)
+                        .then(() => { })
+                    navigate('/login');
+                    localStorage.removeItem('accessToken');
+                }
+                return res.json()
+            })
     )
     refetch();
 
@@ -37,6 +53,7 @@ const MyOrders = () => {
 
     return (
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-10'>
+            <Title title="My Orders" />
             <h1 className='text-4xl font-bold text-center mb-2'>My Orders</h1>
             <p className='text-center mb-12 font-semibold'>
                 {

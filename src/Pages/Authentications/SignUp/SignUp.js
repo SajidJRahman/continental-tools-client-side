@@ -12,7 +12,8 @@ import {
     useUpdateProfile
 } from 'react-firebase-hooks/auth';
 import Spinner from '../../Shared/Spinner/Spinner';
-
+import Title from '../../Shared/Title/Title';
+import useToken from '../../../hooks/useToken';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -50,11 +51,15 @@ const SignUp = () => {
         errorUpdate
     ] = useUpdateProfile(auth);
 
+    const [token] = useToken(userGoogle || userGitHub || user);
+
+
     useEffect(() => {
-        if (userGoogle || userGitHub || user) {
+        if (token) {
             navigate('/');
         }
-    }, [navigate, user, userGitHub, userGoogle]);
+
+    }, [navigate, token]);
 
     if (loadingGoogle || loadingGitHub || loading || updatingUpdate) {
         return <Spinner />
@@ -71,6 +76,7 @@ const SignUp = () => {
 
     return (
         <div className="hero py-5 lg:py-16 px-5 bg-gradient-to-r from-secondary to-primary">
+            <Title title="Sign Up" />
             <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">
                     <h1 className='text-center text-3xl mb-5 lg:text-3xl font-semibold'>Sign Up</h1>

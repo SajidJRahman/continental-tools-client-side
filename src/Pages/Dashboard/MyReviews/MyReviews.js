@@ -6,6 +6,7 @@ import Spinner from '../../Shared/Spinner/Spinner';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import ActionReviewsModal from '../ActionReviewsModal/ActionReviewsModal';
+import Title from '../../Shared/Title/Title';
 
 const MyReviews = () => {
     const [user] = useAuthState(auth);
@@ -36,6 +37,7 @@ const MyReviews = () => {
 
     return (
         <div className='pt-10 pb-5 lg:pb-10'>
+            <Title title="My Reviews" />
             <h1 className='text-4xl font-bold text-center mb-2'>My Reviews</h1>
             <p className='text-center mb-12 font-semibold'>
                 {

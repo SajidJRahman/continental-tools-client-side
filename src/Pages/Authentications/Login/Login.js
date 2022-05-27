@@ -11,6 +11,8 @@ import {
     useSignInWithGithub,
     useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
+import Title from '../../Shared/Title/Title';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -44,11 +46,13 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(userGoogle || userGitHub || user);
+
     useEffect(() => {
-        if (userGoogle || userGitHub || user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [from, navigate, user, userGitHub, userGoogle]);
+    }, [token, from, navigate]);
 
     if (loadingGoogle || loadingGitHub || loading) {
         return <Spinner />;
@@ -64,6 +68,7 @@ const Login = () => {
 
     return (
         <div className="hero py-5 lg:py-16 px-5 bg-gradient-to-r from-[#00008b] to-[#2fbfc7]">
+            <Title title="Login" />
             <div className="card w-full lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
                 <div className="card-body">
                     <h1 className='text-center text-3xl mb-5 lg:text-3xl font-semibold'>Login</h1>

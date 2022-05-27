@@ -4,12 +4,15 @@ import Products from '../Products/Products';
 import BusinessSummery from '../BusinessSummery/BusinessSummery';
 import Reviews from '../Reviews/Reviews';
 import Newsletter from '../Newsletter/Newsletter';
-import Footer from '../../Shared/Footer/Footer';
 import './Home.css';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Continental Tools</title>
+            </Helmet>
             <Banner />
             <Products />
             <BusinessSummery />

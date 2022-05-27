@@ -3,10 +3,12 @@ import './MyPortfolio.css';
 import WebsiteOne from '../../Images/Websites/website-1.png';
 import WebsiteTwo from '../../Images/Websites/website-2.png';
 import WebsiteThree from '../../Images/Websites/website-3.png';
+import Title from '../Shared/Title/Title';
 
 const MyPortfolio = () => {
     return (
         <div>
+            <Title title="My Portfolio" />
             <div className='text-center mt-20 mb-32 lg:mt-56 lg:mb-64'>
                 <h1 className='text-3xl font-bold mb-2'>Hello there,<br />my name is <span className='text-5xl text-info'>Sajid Rahman</span>.</h1>
                 <p>I am a beginner web developer, I have completed more than 20 projects till now.<br />I am looking forward to give the best out of myself! </p>
