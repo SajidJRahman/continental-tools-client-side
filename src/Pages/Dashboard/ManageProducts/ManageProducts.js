@@ -47,11 +47,11 @@ const ManageProducts = () => {
                                     <div className="card-body">
                                         <h2 className="card-title">{product.name}</h2>
                                         <p>{product.description}</p>
-                                        <p>Available in stock: {product.quantity}</p>
-                                        <p>Minimum purchase limit: {product.minimum_quantity}</p>
+                                        <p>Available in stock: <span className='font-semibold'>{product.quantity}</span></p>
+                                        <p>Minimum purchase limit: <span className='font-semibold'>{product.minimum_quantity}</span></p>
                                         <h2 className="card-title">Price: €{product.price}/piece</h2>
                                         <div className="card-actions w-full">
-                                            <label onClick={() => setProductAction(product)} htmlFor="action-product-modal" className="w-full btn btn-error text-white rounded-full">Delete Review</label>
+                                            <label onClick={() => setProductAction(product)} htmlFor="action-product-modal" className="w-full btn btn-error text-white rounded-full">Delete Product</label>
                                         </div>
                                     </div>
                                 </div>

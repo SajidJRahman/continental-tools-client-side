@@ -14,7 +14,12 @@ const ManageAllOrders = () => {
     const currentUser = user.email;
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/my-orders?email=${currentUser}`)
+        fetch(`http://localhost:5000/orders`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
     )
     refetch();
