@@ -25,6 +25,7 @@ import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import ManageUsers from './Pages/Dashboard/ManageUsers/ManageUsers';
 import RequireAdmin from './Pages/Authentications/RequireAdmin/RequireAdmin';
+import EditMyProfile from './Pages/Dashboard/EditMyProfile/EditMyProfile';
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='add-review' element={<AddReview />} />
           <Route path='my-reviews' element={<MyReviews />} />
           <Route path='profile' element={<MyProfile />} />
+          <Route path='edit-profile' element={<EditMyProfile />} />
           <Route path='my-orders' element={<MyOrders />} />
           <Route path='payment/:id' element={<Payment />} />
           <Route path='manage-orders' element={

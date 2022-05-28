@@ -61,7 +61,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost rounded-full normal-case text-[27px] text-white bg-[#4099ff] w-[258px] lg:text-3xl lg:w-60 navbar-title">
+                <Link to='/' className="btn btn-ghost rounded-full normal-case text-[27px] text-white bg-gradient-to-t from-[#4099ff] to-[#52bdff] w-[258px] lg:text-3xl lg:w-60 navbar-title">
                     <span>Continental Tools</span>
                 </Link>
             </div>

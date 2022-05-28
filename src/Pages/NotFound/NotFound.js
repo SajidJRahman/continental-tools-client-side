@@ -5,7 +5,7 @@ import './NotFound.css';
 const NotFound = () => {
     return (
         <div id='not-found'>
-            <div className='not-found text-center'>
+            <div className='not-found text-center px-5'>
                 <h1>404</h1>
                 <h2>Page Not Found!</h2>
                 <p>Nice try though, very few people can reach at this certain place...</p>
