@@ -17,7 +17,7 @@ const Payment = () => {
     const { id } = useParams();
 
     const { isLoading, error, data: orders, refetch } = useQuery(['orders', id], () =>
-        fetch(`http://localhost:5000/orders/${id}`)
+        fetch(`https://continental-tools.herokuapp.com/orders/${id}`)
             .then(res => res.json())
     )
     refetch();
@@ -42,17 +42,17 @@ const Payment = () => {
         <div className='px-5 lg:px-10 pt-10 pb-5 lg:pb-12'>
             <Title title="Payment" />
             <h1 className='text-4xl font-bold text-center mb-2'>Payment</h1>
-            <p className='text-center mb-12 font-semibold'>Complete your order for {orders.product_name}</p>
+            <p className='text-center mb-12 font-semibold'>Complete your order for {orders?.product_name}</p>
             <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img className='w-[400px]' src={orders.product_image} alt="" /></figure>
+                <figure><img className='w-[400px]' src={orders?.product_image} alt="" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title text-lg lg:text-2xl">Complete your order <span className='text-info'>{orders.name}</span></h2>
+                    <h2 className="card-title text-lg lg:text-2xl">Complete your order <span className='text-info'>{orders?.name}</span></h2>
                     <div className='mt-3'>
-                        <p>Item: <span className="text-xl font-semibold">{orders.product_name}</span></p>
-                        <p className='my-1'>Price: <span className='font-semibold'>{orders.product_price}</span>/piece</p>
-                        <p className='my-1'>Quantity: <span className='font-semibold'>{orders.quantity}</span></p>
-                        <p className='my-1'>Shipping Address: <span className='font-semibold'>{orders.address}, {orders.city}, {orders.country}, {orders.zip}</span></p>
-                        <p className='my-1'>Contact Info: <span className='font-semibold'>{orders.email}</span></p>
+                        <p>Item: <span className="text-xl font-semibold">{orders?.product_name}</span></p>
+                        <p className='my-1'>Price: <span className='font-semibold'>{orders?.product_price}</span>/piece</p>
+                        <p className='my-1'>Quantity: <span className='font-semibold'>{orders?.quantity}</span></p>
+                        <p className='my-1'>Shipping Address: <span className='font-semibold'>{orders?.address}, {orders?.city}, {orders?.country}, {orders?.zip}</span></p>
+                        <p className='my-1'>Contact Info: <span className='font-semibold'>{orders?.email}</span></p>
                     </div>
                     <div className="card border shadow-xl bg-base-100">
                         <div className="card-body">

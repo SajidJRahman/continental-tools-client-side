@@ -25,7 +25,7 @@ const Purchase = () => {
     } = useForm();
 
     const { isLoading, error, data: products } = useQuery('purchase', () =>
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://continental-tools.herokuapp.com/products/${id}`)
             .then(res => res.json()
             )
     )
@@ -88,7 +88,7 @@ const Purchase = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/orders', {
+        fetch('https://continental-tools.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -125,7 +125,7 @@ const Purchase = () => {
             <div className="hero-content p-0 gap-0 m-5 lg:m-10 shadow-2xl rounded-[1rem] flex-col lg:flex-row">
                 <div className='h-full w-full'>
                     <div className="card card-compact border-r-0 lg:border-r py-0 lg:py-5 mx-auto w-full h-[544px] rounded-tl-[1rem] lg:rounded-tl-[1rem] rounded-tr-[1rem] lg:rounded-tr-none rounded-bl-none lg:rounded-bl-[1rem] rounded-br-none bg-base-100">
-                        <figure><img className='rounded-[1rem]' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                        <figure><img className='rounded-[1rem] w-[38%]' src={image} alt="Shoes" /></figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{name}</h2>
                             <p>{description}</p>

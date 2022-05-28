@@ -17,7 +17,7 @@ const MyOrders = () => {
     const currentUser = user.email;
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/my-orders?email=${currentUser}`, {
+        fetch(`https://continental-tools.herokuapp.com/my-orders?email=${currentUser}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -56,7 +56,7 @@ const MyOrders = () => {
             <h1 className='text-4xl font-bold text-center mb-2'>My Orders</h1>
             <p className='text-center mb-12 font-semibold'>
                 {
-                    orders.length === 0 ? "You haven't placed any orders yet" : 'These are the orders you placed'
+                    orders?.length === 0 ? "You haven't placed any orders yet" : 'These are the orders you placed'
                 }
             </p>
             <div className="overflow-x-auto">
@@ -75,45 +75,45 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) =>
-                                <tr key={order._id}>
+                            orders?.map((order, index) =>
+                                <tr key={order?._id}>
                                     <th>{index + 1}</th>
                                     <td>
                                         <div className="avatar">
                                             <div className="w-12 mask mask-squircle">
-                                                <img src={order.product_image} alt='' />
+                                                <img src={order?.product_image} alt='' />
                                             </div>
                                         </div>
                                     </td>
-                                    <td><span className='font-semibold'>{order.product_name}</span></td>
-                                    <td><span className='font-semibold'>{order.quantity}</span></td>
-                                    <td><span className='font-bold'>{order.product_price}</span><span className='font-semibold'>/piece</span></td>
+                                    <td><span className='font-semibold'>{order?.product_name}</span></td>
+                                    <td><span className='font-semibold'>{order?.quantity}</span></td>
+                                    <td><span className='font-bold'>{order?.product_price}</span><span className='font-semibold'>/piece</span></td>
                                     <td>
                                         {(
-                                            order.product_price && !order.paid) &&
-                                            <Link to={`/dashboard/payment/${order._id}`}>
+                                            order?.product_price && !order?.paid) &&
+                                            <Link to={`/dashboard/payment/${order?._id}`}>
                                                 <button className="btn btn-outline btn-sm btn-info rounded-full mr-3">Pay Now</button>
                                             </Link>
                                         }
                                         {(
-                                            !order.transectionId &&
+                                            !order?.transectionId &&
                                             <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
                                         )}
                                     </td>
                                     <td><span className='font-bold text-info'>
-                                        {(order.paid && !order.shipped) &&
+                                        {(order?.paid && !order?.shipped) &&
                                             <div className="badge text-white btn-sm font-bold">Panding</div>
                                         }
-                                        {(order.product_price && !order.paid) &&
+                                        {(order?.product_price && !order?.paid) &&
                                             <div className="badge badge-error text-white btn-sm font-bold">Unpaid</div>
                                         }
                                         {
-                                            order.shipped &&
+                                            order?.shipped &&
                                             <div className="badge badge-accent text-white btn-sm font-bold">Shipped</div>
                                         }
                                     </span></td>
                                     <td>
-                                        {order.transectionId &&
+                                        {order?.transectionId &&
                                             <span className='font-bold text-info'>{order?.transectionId}</span>
                                         }
                                     </td>

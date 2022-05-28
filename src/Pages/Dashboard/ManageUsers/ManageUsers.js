@@ -14,7 +14,7 @@ const ManageUsers = () => {
     const [userAction, setUserAction] = useState(null);
 
     const { isLoading, error, data: users, refetch } = useQuery('users', () =>
-        fetch('http://localhost:5000/users', {
+        fetch('https://continental-tools.herokuapp.com/users', {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -48,7 +48,7 @@ const ManageUsers = () => {
     }
 
     const handleAdmin = email => {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://continental-tools.herokuapp.com/users/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -90,7 +90,7 @@ const ManageUsers = () => {
             <h1 className='text-4xl font-bold text-center mb-2'>Manage Users</h1>
             <p className='text-center mb-12 font-semibold'>
                 {
-                    users.length === 0 ? "These are no users to show" : `This is the list of ${users?.length} users`
+                    users?.length === 0 ? "These are no users to show" : `This is the list of ${users?.length} users`
                 }
             </p>
             <div className="overflow-x-auto">
@@ -105,24 +105,24 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) =>
-                                <tr key={user._id}>
+                            users?.map((user, index) =>
+                                <tr key={user?._id}>
                                     <th>{index + 1}</th>
-                                    <td><span className='font-semibold'>{user.email}</span></td>
+                                    <td><span className='font-semibold'>{user?.email}</span></td>
                                     <td>
                                         {
-                                            user.role !== 'admin' &&
-                                            <button onClick={() => handleAdmin(user.email)} className="btn btn-outline btn-sm btn-success rounded-full mr-3">Make Admin</button>
+                                            user?.role !== 'admin' &&
+                                            <button onClick={() => handleAdmin(user?.email)} className="btn btn-outline btn-sm btn-success rounded-full mr-3">Make Admin</button>
                                         }
                                         <label onClick={() => setUserAction(user)} htmlFor="action-user-modal" className="btn btn-outline btn-sm btn-error rounded-full">Delete Review</label>
                                     </td>
                                     <td>
                                         {
-                                            !user.role &&
+                                            !user?.role &&
                                             <div className="badge text-white btn-sm font-bold">User</div>
                                         }
                                         {
-                                            user.role === 'admin' &&
+                                            user?.role === 'admin' &&
                                             <div className="badge badge-info text-white btn-sm font-bold">Admin</div>
                                         }
                                     </td>

@@ -23,7 +23,7 @@ const AddReview = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://continental-tools.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -80,7 +80,7 @@ const AddReview = () => {
                     <textarea className="textarea textarea-bordered w-full lg:w-96 w-full lg:h-full text-center py-36" {...register('image', { required: true })} placeholder="Paste your image link" defaultValue='https://cdn.lorem.space/images/face/.cache/500x0/jake-fagan-Y7C7F26fzZM-unsplash.jpg'></textarea>
                 </div>
                 <div className="card-body py-0 px-0 lg:pl-8">
-                    <input type="hidden" {...register('name', { required: true })} value={user.displayName} placeholder="name" className="input input-bordered" name="name" />
+                    <input type="hidden" {...register('name', { required: true })} value={user?.displayName} placeholder="name" className="input input-bordered" name="name" />
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Job Title</span>
@@ -96,7 +96,7 @@ const AddReview = () => {
                             <span className='label-text-alt text-red-500'>{errorRating}</span>
                         </label>
                     </div>
-                    <input type="hidden" {...register('email')} value={user.email} name="email" placeholder="email" className="input input-bordered" />
+                    <input type="hidden" {...register('email')} value={user?.email} name="email" placeholder="email" className="input input-bordered" />
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Message</span>

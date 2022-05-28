@@ -3,12 +3,9 @@ import { toast } from 'react-toastify';
 import './ActionReviewsModal.css';
 
 const ActionReviewsModal = ({ reviewAction, setReviewAction, refetch }) => {
-    const {
-        _id,
-    } = reviewAction;
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://continental-tools.herokuapp.com/reviews/${reviewAction?._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -12,7 +12,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth);
 
     const { isLoading, error, data: profile } = useQuery('profile', () =>
-        fetch(`http://localhost:5000/my-profile/${user.email}`)
+        fetch(`https://continental-tools.herokuapp.com/my-profile/${user.email}`)
             .then(res => res.json()
             )
     )
@@ -122,11 +122,9 @@ const MyProfile = () => {
                     <div className='flex justify-between items-center border-b pb-4 mt-2'>
                         <p className='font-semibold text-gray-400'>Twitter</p>
                         {
-                            profileInfo?.
-                                twitter ?
+                            profileInfo?.twitter ?
                                 <p className='text-right font-semibold'>
-                                    <a className="link hover" rel="noreferrer" target='_blank' href={profileInfo?.
-                                        twitter} >Visit Twitter</a>
+                                    <a className="link hover" rel="noreferrer" target='_blank' href={profileInfo?.twitter} >Visit Twitter</a>
                                 </p>
                                 :
                                 <p className='text-right text-sm'>Update info to see here</p>

@@ -12,7 +12,7 @@ const Products = () => {
     }
 
     const { isLoading, error, data: products } = useQuery('products', () =>
-        fetch('http://localhost:5000/products')
+        fetch('https://continental-tools.herokuapp.com/products')
             .then(res => res.json()
             )
     )
@@ -39,19 +39,19 @@ const Products = () => {
             <p className='text-center mb-16 px-5'>Choose from some of the best selling products on market!<br />Good in price, great in quality.</p>
             <div className='px-5 lg:px-14 md:px-14 grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1'>
                 {
-                    products.map(product =>
-                        <div key={product._id} >
+                    products?.map(product =>
+                        <div key={product?._id} >
                             <div style={{ boxShadow: '0 0 0, 0 0 10px #e2e2e2' }} className="card w-full h-full bg-base-100 mx-auto">
                                 <div className="card lg:card-side bg-base-100 shadow-xl w-full h-full">
-                                    <figure><img className='rounded-lg' src={product.image} alt="" /></figure>
+                                    <figure><img className='rounded-lg' src={product?.image} alt="" /></figure>
                                     <div className="card-body">
-                                        <h2 className="card-title">{product.name}</h2>
-                                        <p>{product.description}</p>
-                                        <p>Available in stock: {product.quantity}</p>
-                                        <p>Minimum purchase limit: {product.minimum_quantity}</p>
-                                        <h2 className="card-title">Price: €{product.price}/piece</h2>
+                                        <h2 className="card-title">{product?.name}</h2>
+                                        <p>{product?.description}</p>
+                                        <p>Available in stock: {product?.quantity}</p>
+                                        <p>Minimum purchase limit: {product?.minimum_quantity}</p>
+                                        <h2 className="card-title">Price: €{product?.price}/piece</h2>
                                         <div className="card-actions">
-                                            <button onClick={() => navigateToPurchase(product._id)} className="w-full lg:w-80 md:w-80 btn btn-primary rounded-full">Purchase Now</button>
+                                            <button onClick={() => navigateToPurchase(product?._id)} className="w-full lg:w-80 md:w-80 btn btn-primary rounded-full">Purchase Now</button>
                                         </div>
                                     </div>
                                 </div>

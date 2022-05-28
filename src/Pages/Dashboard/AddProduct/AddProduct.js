@@ -59,7 +59,7 @@ const AddProduct = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/products', {
+        fetch('https://continental-tools.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -97,7 +97,7 @@ const AddProduct = () => {
 
             <div className="card lg:card-side bg-base-100 shadow-xl p-10">
                 <div className="form-control">
-                    <textarea className="textarea textarea-bordered w-full lg:w-96 h-full lg:h-full text-center py-36" {...register('image', { required: true })} placeholder="Paste product image link" defaultValue='https://cdn.lorem.space/images/face/.cache/500x0/jake-fagan-Y7C7F26fzZM-unsplash.jpg'></textarea>
+                    <textarea className="textarea textarea-bordered w-full lg:w-96 h-full lg:h-full text-center py-36" {...register('image', { required: true })} placeholder="Paste product image link" defaultValue='https://images.obi-italia.it/product/IT/1500x1500/324192_2.jpg'></textarea>
                 </div>
                 <div className="card-body py-0 px-0 lg:pl-8">
                     <div className="form-control">

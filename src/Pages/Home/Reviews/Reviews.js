@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Reviews = () => {
     const { isLoading, error, data: reviews } = useQuery('reviews', () =>
-        fetch('http://localhost:5000/reviews')
+        fetch('https://continental-tools.herokuapp.com/reviews')
             .then(res => res.json()
             )
     )
@@ -34,20 +34,20 @@ const Reviews = () => {
             <div className='px-5 lg:px-14 md:px-14 grid gap-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
                 {
                     reviews?.map(review =>
-                        <div key={review._id} className="rounded-2xl flex items-center bg-base-100 shadow-xl">
+                        <div key={review?._id} className="rounded-2xl flex items-center bg-base-100 shadow-xl">
                             <div className='px-5 border-r'>
                                 <div className="avatar">
                                     <div className="w-24 rounded-full">
-                                        <img src={review.image} alt='' />
+                                        <img src={review?.image} alt='' />
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div className="card-body pl-4">
-                                    <h2 className="card-title">{review.name}</h2>
-                                    <div className="badge">{review.title}</div>
-                                    <p className='mb-5'>Rated us <span className='text-orange-300 font-bold text-[30px]'>{review.stars}</span><span className='text-[20px]'>/</span><span className='font-bold text-[20px]'>5</span></p>
-                                    <p>{review.description}</p>
+                                    <h2 className="card-title">{review?.name}</h2>
+                                    <div className="badge">{review?.title}</div>
+                                    <p className='mb-5'>Rated us <span className='text-orange-300 font-bold text-[30px]'>{review?.stars}</span><span className='text-[20px]'>/</span><span className='font-bold text-[20px]'>5</span></p>
+                                    <p>{review?.description}</p>
 
                                     <div className="card-actions justify-end">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="text-[#fa4764] h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

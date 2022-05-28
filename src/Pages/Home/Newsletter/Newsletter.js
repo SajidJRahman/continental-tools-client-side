@@ -10,7 +10,7 @@ const Newsletter = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/newsletter', {
+        fetch('https://continental-tools.herokuapp.com/newsletter', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

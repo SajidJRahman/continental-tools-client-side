@@ -21,7 +21,7 @@ const EditMyProfile = () => {
     } = useForm();
 
     const { isLoading, error, data: profile, refetch } = useQuery('profile', () =>
-        fetch(`http://localhost:5000/my-profile/${user.email}`)
+        fetch(`https://continental-tools.herokuapp.com/my-profile/${user?.email}`)
             .then(res => res.json()
             )
     )
@@ -46,7 +46,7 @@ const EditMyProfile = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch(`http://localhost:5000/my-profile/${user.email}`, {
+        fetch(`https://continental-tools.herokuapp.com/my-profile/${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -94,9 +94,9 @@ const EditMyProfile = () => {
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email" placeholder="Type here" value={user.email} disabled className="input input-bordered w-full" />
+                        <input type="email" placeholder="Type here" value={user?.email} disabled className="input input-bordered w-full" />
                     </div>
-                    <input type="hidden" {...register('email')} name="email" value={user.email} />
+                    <input type="hidden" {...register('email')} name="email" value={user?.email} />
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Phone Number</span>

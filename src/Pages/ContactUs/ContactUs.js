@@ -18,7 +18,7 @@ const ContactUs = () => {
 
     const onSubmit = data => {
         setShowSpinner(<SpinnerSecondary />);
-        fetch('http://localhost:5000/contact-us', {
+        fetch('https://continental-tools.herokuapp.com/contact-us', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './ManageAllOrders.css';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
 import { useQuery } from 'react-query';
 import Spinner from '../../Shared/Spinner/Spinner';
 import { toast } from 'react-toastify';
@@ -9,12 +7,10 @@ import ActionModal from '../ActionModal/ActionModal';
 import Title from '../../Shared/Title/Title';
 
 const ManageAllOrders = () => {
-    const [user] = useAuthState(auth);
     const [orderAction, setOrderAction] = useState(null);
-    const currentUser = user.email;
 
     const { isLoading, error, data: orders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://continental-tools.herokuapp.com/orders`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -41,7 +37,7 @@ const ManageAllOrders = () => {
     }
 
     const handleShipped = _id => {
-        fetch(`http://localhost:5000/manage-order/${_id}`, {
+        fetch(`https://continental-tools.herokuapp.com/manage-order/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -68,7 +64,7 @@ const ManageAllOrders = () => {
             <h1 className='text-4xl font-bold text-center mb-2'>Manage All Orders</h1>
             <p className='text-center mb-12 font-semibold'>
                 {
-                    orders.length === 0 ? "There are no orders yet" : 'These are all the orders that clients placed'
+                    orders?.length === 0 ? "There are no orders yet" : 'These are all the orders that clients placed'
                 }
             </p>
             <div className="overflow-x-auto">
@@ -87,47 +83,47 @@ const ManageAllOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order, index) =>
-                                <tr key={order._id}>
+                            orders?.map((order, index) =>
+                                <tr key={order?._id}>
                                     <th>{index + 1}</th>
                                     <td>
                                         <div className="avatar">
                                             <div className="w-12 mask mask-squircle">
-                                                <img src={order.product_image} alt='' />
+                                                <img src={order?.product_image} alt='' />
                                             </div>
                                         </div>
                                     </td>
-                                    <td><span className='font-semibold'>{order.product_name}</span></td>
-                                    <td><span className='font-semibold'>{order.quantity}</span></td>
-                                    <td><span className='font-bold'>{order.product_price}</span><span className='font-semibold'>/piece</span></td>
+                                    <td><span className='font-semibold'>{order?.product_name}</span></td>
+                                    <td><span className='font-semibold'>{order?.quantity}</span></td>
+                                    <td><span className='font-bold'>{order?.product_price}</span><span className='font-semibold'>/piece</span></td>
                                     <td>
                                         {(
-                                            (!order.shipped && order.paid) &&
+                                            (!order?.shipped && order?.paid) &&
                                             <div>
-                                                <label onClick={() => handleShipped(order._id)} className="btn btn-outline btn-sm btn-info rounded-full">Shipped</label>
+                                                <label onClick={() => handleShipped(order?._id)} className="btn btn-outline btn-sm btn-info rounded-full">Shipped</label>
                                             </div>
                                         )}
                                         {
-                                            !order.paid &&
+                                            !order?.paid &&
                                             <label onClick={() => setOrderAction(order)} htmlFor="action-modal" className="btn btn-outline btn-sm btn-error rounded-full">Cancel Order</label>
                                         }
                                     </td>
                                     <td><span className='font-bold text-info'>
                                         {
-                                            (!order.shipped && order.paid) &&
+                                            (!order?.shipped && order?.paid) &&
                                             <div className="badge text-white btn-sm font-bold">Panding</div>
                                         }
                                         {
-                                            !order.paid &&
+                                            !order?.paid &&
                                             <div className="badge badge-error text-white btn-sm font-bold">Unpaid</div>
                                         }
                                         {
-                                            order.shipped &&
+                                            order?.shipped &&
                                             <div className="badge badge-accent text-white btn-sm font-bold">Shipped</div>
                                         }
                                     </span></td>
                                     <td>
-                                        {order.transectionId &&
+                                        {order?.transectionId &&
                                             <span className='font-bold text-info'>{order?.transectionId}</span>
                                         }
                                     </td>
