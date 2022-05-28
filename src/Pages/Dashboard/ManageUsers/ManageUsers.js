@@ -114,7 +114,12 @@ const ManageUsers = () => {
                                             user?.role !== 'admin' &&
                                             <button onClick={() => handleAdmin(user?.email)} className="btn btn-outline btn-sm btn-success rounded-full mr-3">Make Admin</button>
                                         }
-                                        <label onClick={() => setUserAction(user)} htmlFor="action-user-modal" className="btn btn-outline btn-sm btn-error rounded-full">Delete Review</label>
+                                        {
+                                            user?.role === 'admin' ?
+                                                <label onClick={() => setUserAction(user)} htmlFor="action-user-modal" className="btn btn-outline btn-sm btn-error rounded-full">Remove Admin</label>
+                                                :
+                                                <label onClick={() => setUserAction(user)} htmlFor="action-user-modal" className="btn btn-outline btn-sm btn-error rounded-full">Remove User</label>
+                                        }
                                     </td>
                                     <td>
                                         {
