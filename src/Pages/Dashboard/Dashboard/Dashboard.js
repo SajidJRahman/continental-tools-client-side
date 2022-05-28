@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
     return (
-        <div className="drawer drawer-mobile">
+        <div className="drawer drawer-mobile font-poppins">
             <Title title="Dashboard" />
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content bg-gradient-to-t from-[#4099ff] to-[#afdffc]">

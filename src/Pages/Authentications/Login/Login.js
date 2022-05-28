@@ -67,7 +67,7 @@ const Login = () => {
     }
 
     return (
-        <div className="hero py-5 lg:py-16 px-5 bg-gradient-to-r from-[#00008b] to-[#2fbfc7]">
+        <div className="hero font-poppins py-5 lg:py-16 px-5 bg-gradient-to-r from-[#00008b] to-[#2fbfc7]">
             <Title title="Login" />
             <div className="card w-full lg:w-2/6 sm:w-3/5 shadow-2xl bg-base-100">
                 <div className="card-body">

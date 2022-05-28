@@ -4,7 +4,7 @@ import Tools from '../../../Images/Tools/tools.jpg';
 
 const Banner = () => {
     return (
-        <div className="hero min-h-screen" style={{
+        <div className="hero min-h-screen font-poppins" style={{
             backgroundImage: `url(${Tools})`
         }}>
             <div className="hero-overlay bg-opacity-60"></div>

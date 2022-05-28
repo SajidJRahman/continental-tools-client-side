@@ -3,7 +3,7 @@ import './BusinessSummery.css';
 
 const BusinessSummery = () => {
     return (
-        <div className='text-center pt-16 bg-gradient-to-r from-[lightskyblue] to-[#f9a17b] '>
+        <div className='font-poppins text-center pt-16 bg-gradient-to-r from-[lightskyblue] to-[#f9a17b] '>
             <h1 className='text-3xl lg:text-4xl font-bold text-neutral-focus'>Business Summary</h1>
             <p className='text-lg lg:text-xl'>Our customer trust us with the service we provide</p>
             <div className="stats shadow w-80 lg:w-3/4 mt-16 mb-11 lg:mb-32">

@@ -75,7 +75,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="hero py-5 lg:py-16 px-5 bg-gradient-to-r from-secondary to-primary">
+        <div className="hero font-poppins py-5 lg:py-16 px-5 bg-gradient-to-r from-secondary to-primary">
             <Title title="Sign Up" />
             <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">

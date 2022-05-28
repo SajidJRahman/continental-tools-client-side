@@ -56,7 +56,7 @@ const ResetPassword = () => {
     }
 
     return (
-        <div className="hero py-5 lg:py-44 px-5 bg-gradient-to-r from-[#2fbfc7] to-[#00008b]">
+        <div className="hero font-poppins py-5 lg:py-44 px-5 bg-gradient-to-r from-[#2fbfc7] to-[#00008b]">
             <Title title="Reset Password" />
             <div className="card w-full lg:w-2/6 shadow-2xl bg-base-100">
                 <div className="card-body">

@@ -37,7 +37,7 @@ const Newsletter = () => {
     }
 
     return (
-        <div className='bg-gradient-to-t from-[#4099ff] to-[#afdffc] pt-16 pb-5 lg:pb-16'>
+        <div className='font-poppins bg-gradient-to-t from-[#4099ff] to-[#afdffc] pt-16 pb-5 lg:pb-16'>
             <h1 className='text-3xl lg:text-4xl font-bold text-center mb-2'>Get in touch</h1>
             <p className='text-center mb-16 px-5'>Subscribe to our newsletter to get latest update on our services!</p>
             <div className="card rounded-3xl w-[355px] lg:w-96 sm:w-80 bg-base-100 shadow-xl mx-auto">

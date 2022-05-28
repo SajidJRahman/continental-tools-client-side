@@ -7,7 +7,7 @@ import Title from '../Shared/Title/Title';
 
 const MyPortfolio = () => {
     return (
-        <div>
+        <div className='font-poppins'>
             <Title title="My Portfolio" />
             <div className='text-center mt-20 mb-32 lg:mt-56 lg:mb-64'>
                 <h1 className='text-3xl font-bold mb-2'>Hello there,<br />my name is <span className='text-5xl text-info'>Sajid Rahman</span>.</h1>

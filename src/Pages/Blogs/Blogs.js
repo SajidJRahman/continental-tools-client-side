@@ -4,7 +4,7 @@ import Title from '../Shared/Title/Title';
 
 const Blogs = () => {
     return (
-        <div>
+        <div className='font-poppins'>
             <Title title="Blogs" />
 
         </div>
