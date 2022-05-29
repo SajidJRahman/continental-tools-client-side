@@ -60,6 +60,7 @@ const CheckoutForm = ({ orders }) => {
         });
 
         if (error) {
+            setShowSpinner();
             setPaymentError(error?.message);
             setSuccess(false)
         }
@@ -81,6 +82,7 @@ const CheckoutForm = ({ orders }) => {
         );
 
         if (intentError) {
+            setShowSpinner();
             setPaymentError(intentError?.message);
         }
         else {
