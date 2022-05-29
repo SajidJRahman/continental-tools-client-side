@@ -35,7 +35,7 @@ const ActionProductsModal = ({ productAction, setProductAction, refetch }) => {
                     <figure className='pt-4'>
                         <img className='rounded-lg w-[30%] mx-auto' src={productAction?.image} alt="" />
                     </figure>
-                    <p className="py-4 text-center">This cannot be undone, are you sure you want to cancel the order for  <span className='font-bold'>{productAction?.name}</span> ?</p>
+                    <p className="py-4 text-center">This cannot be undone, are you sure you want to delete <span className='font-bold'>{productAction?.name}</span> ?</p>
                     <div className="modal-action justify-center">
                         <button onClick={() => handleDelete()} className="btn btn-sm btn-error px-12 text-white font-bold rounded-full">Delete</button>
                         <label htmlFor="action-product-modal" className="btn btn-sm rounded-full px-12">Close</label>

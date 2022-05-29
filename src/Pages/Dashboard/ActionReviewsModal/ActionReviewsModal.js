@@ -32,7 +32,7 @@ const ActionReviewsModal = ({ reviewAction, setReviewAction, refetch }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg text-center text-red-500">Confirm Delete</h3>
-                    <p className="py-4 text-center">This cannot be undone, are you sure you want to cancel your review?</p>
+                    <p className="py-4 text-center">This cannot be undone, are you sure you want to delete your review?</p>
                     <div className="modal-action justify-center">
                         <button onClick={() => handleDelete()} className="btn btn-sm btn-error px-12 text-white font-bold rounded-full">Delete</button>
                         <label htmlFor="action-review-modal" className="btn btn-sm rounded-full px-12">Close</label>
