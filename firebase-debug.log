@@ -1,0 +1,16 @@
+[debug] [2022-05-29T13:13:25.168Z] ----------------------------------------------------------------------
+[debug] [2022-05-29T13:13:25.173Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\thesa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-05-29T13:13:25.175Z] CLI Version:   10.6.0
+[debug] [2022-05-29T13:13:25.176Z] Platform:      win32
+[debug] [2022-05-29T13:13:25.177Z] Node Version:  v16.13.1
+[debug] [2022-05-29T13:13:25.180Z] Time:          Sun May 29 2022 15:13:25 GMT+0200 (Central European Summer Time)
+[debug] [2022-05-29T13:13:25.181Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-29T13:13:25.756Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-29T13:13:25.757Z] > authorizing via signed-in user (thesajidjones@gmail.com)
+[debug] [2022-05-29T13:13:25.806Z] [iam] checking project continental-tools for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-05-29T13:13:25.816Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/continental-tools:testIamPermissions [none]
+[debug] [2022-05-29T13:13:25.817Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/continental-tools:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-05-29T13:13:26.703Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/continental-tools:testIamPermissions 200
+[debug] [2022-05-29T13:13:26.703Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/continental-tools:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-05-29T13:13:26.706Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/continental-tools [none]

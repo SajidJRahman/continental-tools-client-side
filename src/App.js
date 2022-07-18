@@ -26,11 +26,13 @@ import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import ManageUsers from './Pages/Dashboard/ManageUsers/ManageUsers';
 import RequireAdmin from './Pages/Authentications/RequireAdmin/RequireAdmin';
 import EditMyProfile from './Pages/Dashboard/EditMyProfile/EditMyProfile';
+import ScrollToTop from './Pages/ScrollToTop/ScrollToTop';
 
 const App = () => {
   return (
     <div>
       <ToastContainer />
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
